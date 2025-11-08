@@ -1,9 +1,3 @@
-
----
-
-## 📘 USER_GUIDE.md (uporabniška navodila)
-
-```md
 # 📘 Uporabniška navodila – Badminton Tournament Manager
 
 Ta dokument opisuje tipičen potek dela: od ustvarjanja turnirja do vnašanja rezultatov in pregleda končne razpredelnice.
