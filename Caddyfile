@@ -1,0 +1,13 @@
+{
+    frankenphp
+}
+
+:80 {
+    root * /app/webroot
+
+    php_server {
+        root /app/webroot
+    }
+
+    try_files {path} /index.php
+}
