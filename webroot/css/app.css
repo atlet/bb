@@ -110,6 +110,10 @@
         @apply bg-red-100 border border-red-300 text-red-800 px-3 py-2 rounded mb-3;
     }
 
+    .flash-info {
+        @apply bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded mb-3 text-sm flex items-center gap-2;
+    }
+
     .flash-success,
     .flash-error {
         @apply flex items-start gap-2 text-sm;
@@ -163,7 +167,23 @@
         @apply bg-slate-50;
     }
 
-    .flash-info {
-        @apply bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded mb-3 text-sm flex items-center gap-2;
+    .checkbox {
+        @apply flex items-center gap-2 py-1;
+    }
+
+    .checkbox input[type="checkbox"] {
+        @apply h-4 w-4 rounded border-slate-300 text-primary-600 focus:ring-primary-500;
+    }
+
+    .checkbox label {
+        @apply text-sm text-slate-700 cursor-pointer;
+    }
+
+    .checkbox:hover {
+        @apply bg-slate-50 rounded-md;
+    }
+
+    .bt-checkbox-group {
+        @apply border border-slate-200 rounded-md px-3 py-2 bg-white max-h-64 overflow-y-auto;
     }
 }
