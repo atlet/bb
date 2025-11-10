@@ -162,4 +162,8 @@
     .dl-seznam dd:nth-child(4n+2) {
         @apply bg-slate-50;
     }
+
+    .flash-info {
+        @apply bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded mb-3 text-sm flex items-center gap-2;
+    }
 }

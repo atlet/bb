@@ -7,7 +7,6 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-50: oklch(97.1% 0.013 17.38);
     --color-red-100: oklch(93.6% 0.032 17.717);
     --color-red-300: oklch(80.8% 0.114 19.571);
     --color-red-600: oklch(57.7% 0.245 27.325);
@@ -20,18 +19,17 @@
     --color-green-300: oklch(87.1% 0.15 154.449);
     --color-green-800: oklch(44.8% 0.119 151.328);
     --color-emerald-50: oklch(97.9% 0.021 166.113);
-    --color-emerald-100: oklch(95% 0.052 163.051);
     --color-emerald-400: oklch(76.5% 0.177 163.223);
     --color-emerald-600: oklch(59.6% 0.145 163.225);
     --color-emerald-700: oklch(50.8% 0.118 165.612);
     --color-sky-50: oklch(97.7% 0.013 236.62);
-    --color-sky-100: oklch(95.1% 0.026 236.824);
     --color-sky-200: oklch(90.1% 0.058 230.902);
     --color-sky-300: oklch(82.8% 0.111 230.318);
-    --color-sky-700: oklch(50% 0.134 242.749);
     --color-sky-800: oklch(44.3% 0.11 240.79);
-    --color-purple-50: oklch(97.7% 0.014 308.299);
-    --color-purple-700: oklch(49.6% 0.265 301.924);
+    --color-blue-50: oklch(97% 0.014 254.604);
+    --color-blue-200: oklch(88.2% 0.059 254.128);
+    --color-blue-500: oklch(62.3% 0.214 259.815);
+    --color-blue-800: oklch(42.4% 0.199 265.638);
     --color-rose-50: oklch(96.9% 0.015 12.422);
     --color-rose-300: oklch(81% 0.117 11.638);
     --color-rose-700: oklch(51.4% 0.222 16.935);
@@ -370,6 +368,9 @@
   .flex-1 {
     flex: 1;
   }
+  .flex-shrink-0 {
+    flex-shrink: 0;
+  }
   .animate-pulse {
     animation: var(--animate-pulse);
   }
@@ -475,6 +476,9 @@
   .border-amber-200 {
     border-color: var(--color-amber-200);
   }
+  .border-blue-200 {
+    border-color: var(--color-blue-200);
+  }
   .border-border-soft {
     border-color: var(--color-border-soft);
   }
@@ -495,6 +499,9 @@
   }
   .bg-amber-50 {
     background-color: var(--color-amber-50);
+  }
+  .bg-blue-50 {
+    background-color: var(--color-blue-50);
   }
   .bg-emerald-50 {
     background-color: var(--color-emerald-50);
@@ -627,6 +634,12 @@
   }
   .text-amber-800 {
     color: var(--color-amber-800);
+  }
+  .text-blue-500 {
+    color: var(--color-blue-500);
+  }
+  .text-blue-800 {
+    color: var(--color-blue-800);
   }
   .text-emerald-400 {
     color: var(--color-emerald-400);
@@ -1107,6 +1120,22 @@
   }
   .dl-seznam dt:nth-child(4n+1), .dl-seznam dd:nth-child(4n+2) {
     background-color: var(--color-slate-50);
+  }
+  .flash-info {
+    margin-bottom: calc(var(--spacing) * 3);
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 2);
+    border-radius: 0.25rem;
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-blue-200);
+    background-color: var(--color-blue-50);
+    padding-inline: calc(var(--spacing) * 3);
+    padding-block: calc(var(--spacing) * 2);
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+    color: var(--color-blue-800);
   }
 }
 @property --tw-space-y-reverse {

@@ -184,7 +184,7 @@ class TournamentMatchesController extends AppController {
 
         if (count($competitors) < 2) {
             $this->Flash->info('Ni dovolj tekmovalcev za novo tekmo.');
-            return $this->redirect($this->referer());
+            return $this->redirect("/tournament-events/control/{$eventId}");
         }
 
         // kdo že igra (in_progress)?
@@ -216,7 +216,7 @@ class TournamentMatchesController extends AppController {
 
         if (count($free) < 2) {
             $this->Flash->info('Ni dveh prostih tekmovalcev za novo tekmo.');
-            return $this->redirect($this->referer());
+            return $this->redirect("/tournament-events/control/{$eventId}");
         }
 
         // vse kombinacije parov
@@ -249,7 +249,7 @@ class TournamentMatchesController extends AppController {
 
         if (empty($validPairs)) {
             $this->Flash->info('Ni več novih parov, ki še niso igrali med sabo. Turnir je morda pri koncu.');
-            return $this->redirect($this->referer());
+            return $this->redirect("/tournament-events/control/{$eventId}");
         }
 
         // random par
@@ -276,7 +276,7 @@ class TournamentMatchesController extends AppController {
             $this->Flash->error('Nisem uspel ustvariti nove tekme.');
         }
 
-        return $this->redirect($this->referer());
+        return $this->redirect("/tournament-events/control/{$eventId}");
     }
 
     /**
