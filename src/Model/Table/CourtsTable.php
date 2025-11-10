@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -30,16 +31,14 @@ use Cake\Validation\Validator;
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class CourtsTable extends Table
-{
+class CourtsTable extends Table {
     /**
      * Initialize method
      *
      * @param array<string, mixed> $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config): void
-    {
+    public function initialize(array $config): void {
         parent::initialize($config);
 
         $this->setTable('courts');
@@ -63,8 +62,7 @@ class CourtsTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator): Validator
-    {
+    public function validationDefault(Validator $validator): Validator {
         $validator
             ->integer('tournament_id')
             ->notEmptyString('tournament_id');
@@ -89,10 +87,15 @@ class CourtsTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules): RulesChecker
-    {
+    public function buildRules(RulesChecker $rules): RulesChecker {
         $rules->add($rules->existsIn(['tournament_id'], 'Tournaments'), ['errorField' => 'tournament_id']);
 
         return $rules;
+    }
+
+    public function getCourtsForTournament(int $tournamentId): SelectQuery {
+        return $this->find('list')
+            ->where(['tournament_id' => $tournamentId])
+            ->orderByAsc('sort_order');
     }
 }

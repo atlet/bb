@@ -40,19 +40,20 @@ class CompetitorsController extends AppController {
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add() {
+    public function add($tournament_event_id) {
         $competitor = $this->Competitors->newEmptyEntity();
         if ($this->request->is('post')) {
             $competitor = $this->Competitors->patchEntity($competitor, $this->request->getData());
+            $competitor->tournament_event_id = $tournament_event_id;
             if ($this->Competitors->save($competitor)) {
                 $this->Flash->success(__('The competitor has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect("/tournament-events/view/{$tournament_event_id}");
             }
             $this->Flash->error(__('The competitor could not be saved. Please, try again.'));
         }
-        $tournamentEvents = $this->Competitors->TournamentEvents->find('list', limit: 200)->all();
-        $this->set(compact('competitor', 'tournamentEvents'));
+        
+        $this->set(compact('competitor', 'tournament_event_id'));
     }
 
     /**
@@ -64,17 +65,18 @@ class CompetitorsController extends AppController {
      */
     public function edit($id = null) {
         $competitor = $this->Competitors->get($id, contain: []);
+        $tournament_event_id = $competitor->tournament_event_id;
         if ($this->request->is(['patch', 'post', 'put'])) {
             $competitor = $this->Competitors->patchEntity($competitor, $this->request->getData());
             if ($this->Competitors->save($competitor)) {
                 $this->Flash->success(__('The competitor has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect("/tournament-events/view/{$tournament_event_id}");
             }
             $this->Flash->error(__('The competitor could not be saved. Please, try again.'));
         }
-        $tournamentEvents = $this->Competitors->TournamentEvents->find('list', limit: 200)->all();
-        $this->set(compact('competitor', 'tournamentEvents'));
+        
+        $this->set(compact('competitor', 'tournament_event_id'));
     }
 
     /**
@@ -87,12 +89,13 @@ class CompetitorsController extends AppController {
     public function delete($id = null) {
         $this->request->allowMethod(['post', 'delete']);
         $competitor = $this->Competitors->get($id);
+        $tournament_event_id = $competitor->tournament_event_id;
         if ($this->Competitors->delete($competitor)) {
             $this->Flash->success(__('The competitor has been deleted.'));
         } else {
             $this->Flash->error(__('The competitor could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect("/tournament-events/view/{$tournament_event_id}");
     }
 }

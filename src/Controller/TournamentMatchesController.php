@@ -34,7 +34,7 @@ class TournamentMatchesController extends AppController {
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null) {
-        $tournamentMatch = $this->TournamentMatches->get($id, contain: ['TournamentEvents', 'Competitor1s', 'Competitor2s', 'Winners', 'Courts']) ;
+        $tournamentMatch = $this->TournamentMatches->get($id, contain: ['TournamentEvents', 'Competitor1s', 'Competitor2s', 'Winners', 'Courts']);
         $this->set(compact('tournamentMatch'));
     }
 
@@ -43,22 +43,23 @@ class TournamentMatchesController extends AppController {
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add() {
+    public function add(int $tournament_event_id) {
         $tournamentMatch = $this->TournamentMatches->newEmptyEntity();
         if ($this->request->is('post')) {
             $tournamentMatch = $this->TournamentMatches->patchEntity($tournamentMatch, $this->request->getData());
+            $tournamentMatch->tournament_event_id = $tournament_event_id;
             if ($this->TournamentMatches->save($tournamentMatch)) {
                 $this->Flash->success(__('The tournament match has been saved.'));
+                $this->TournamentMatches->recalculateStatsForEvent($tournament_event_id);
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $tournamentMatch->id]);
             }
             $this->Flash->error(__('The tournament match could not be saved. Please, try again.'));
         }
-        $tournamentEvents = $this->TournamentMatches->TournamentEvents->find('list', limit: 200)->all();
-        $competitors = $this->TournamentMatches->Competitor1s->find('list', limit: 200)->all();
-        $winners = $this->TournamentMatches->Winners->find('list', limit: 200)->all();
-        $courts = $this->TournamentMatches->Courts->find('list', limit: 200)->all();
-        $this->set(compact('tournamentMatch', 'tournamentEvents', 'competitors', 'winners', 'courts'));
+        
+        $competitors = $this->TournamentMatches->Competitor1s->getCompetitorsForEvent($tournament_event_id);        
+        $courts = $this->TournamentMatches->Courts->getCourtsForTournament($tournament_event_id);
+        $this->set(compact('tournamentMatch', 'competitors', 'courts', 'tournament_event_id'));
     }
 
     /**
@@ -70,20 +71,21 @@ class TournamentMatchesController extends AppController {
      */
     public function edit($id = null) {
         $tournamentMatch = $this->TournamentMatches->get($id, contain: []);
+        $tournament_event_id = $tournamentMatch->tournament_event_id;
         if ($this->request->is(['patch', 'post', 'put'])) {
             $tournamentMatch = $this->TournamentMatches->patchEntity($tournamentMatch, $this->request->getData());
             if ($this->TournamentMatches->save($tournamentMatch)) {
                 $this->Flash->success(__('The tournament match has been saved.'));
+                $this->TournamentMatches->recalculateStatsForEvent($tournament_event_id);
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $tournamentMatch->id]);
             }
             $this->Flash->error(__('The tournament match could not be saved. Please, try again.'));
         }
-        $tournamentEvents = $this->TournamentMatches->TournamentEvents->find('list', limit: 200)->all();
-        $competitors = $this->TournamentMatches->Competitor1s->find('list', limit: 200)->all();
-        $winners = $this->TournamentMatches->Winners->find('list', limit: 200)->all();
-        $courts = $this->TournamentMatches->Courts->find('list', limit: 200)->all();
-        $this->set(compact('tournamentMatch', 'tournamentEvents', 'competitors', 'winners', 'courts'));
+        
+        $competitors = $this->TournamentMatches->Competitor1s->getCompetitorsForEvent($tournament_event_id);        
+        $courts = $this->TournamentMatches->Courts->getCourtsForTournament($tournament_event_id);
+        $this->set(compact('tournamentMatch', 'competitors', 'courts', 'tournament_event_id'));
     }
 
     /**
@@ -96,13 +98,14 @@ class TournamentMatchesController extends AppController {
     public function delete($id = null) {
         $this->request->allowMethod(['post', 'delete']);
         $tournamentMatch = $this->TournamentMatches->get($id);
+        $tournament_event_id = $tournamentMatch->tournament_event_id;
         if ($this->TournamentMatches->delete($tournamentMatch)) {
             $this->Flash->success(__('The tournament match has been deleted.'));
         } else {
             $this->Flash->error(__('The tournament match could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller' => 'TournamentEvents', 'action' => 'view', $tournament_event_id]);
     }
 
     /**
@@ -163,17 +166,11 @@ class TournamentMatchesController extends AppController {
         $this->set(compact('match'));
     }
 
-    /**
-     * Dodeli NASLEDNJO tekmo na igrišče:
-     * - poišče 2 prosta tekmovalca (losses<2, ne igrata),
-     * - ne ponavlja parov, ki so že igrali skupaj (finished),
-     * - ustvari match s statusom 'in_progress'.
-     */
     public function startNextOnCourt($eventId = null, $courtId = null) {
-        $matchesTable = $this->TournamentMatches;
+        $matchesTable     = $this->TournamentMatches;
         $competitorsTable = $this->fetchTable('Competitors');
 
-        // aktivni tekmovalci (še niso izpadli)
+        // 1) Aktivni tekmovalci (še niso izpadli)
         $competitors = $competitorsTable->find()
             ->where([
                 'tournament_event_id' => $eventId,
@@ -187,7 +184,7 @@ class TournamentMatchesController extends AppController {
             return $this->redirect("/tournament-events/control/{$eventId}");
         }
 
-        // kdo že igra (in_progress)?
+        // 2) Kdo trenutno igra (in_progress) – opcijsko lahko dodaš še 'scheduled'
         $busyMatches = $matchesTable->find()
             ->select(['competitor1_id', 'competitor2_id'])
             ->where([
@@ -206,7 +203,7 @@ class TournamentMatchesController extends AppController {
             }
         }
 
-        // prosti tekmovalci
+        // 3) Prosti tekmovalci
         $free = [];
         foreach ($competitors as $c) {
             if (!isset($busy[$c->id])) {
@@ -219,51 +216,99 @@ class TournamentMatchesController extends AppController {
             return $this->redirect("/tournament-events/control/{$eventId}");
         }
 
-        // vse kombinacije parov
-        $pairs = [];
+        // 4) Preberi VSE že odigrane tekme (finished) za ta event:
+        //    - da izračunamo "games_played" po tekmovalcih
+        //    - in da vemo, kateri pari so ŽE igrali skupaj
+        $finished = $matchesTable->find()
+            ->select(['competitor1_id', 'competitor2_id'])
+            ->where([
+                'tournament_event_id' => $eventId,
+                'status' => 'finished',
+            ])
+            ->all();
+
+        // inicializiraj št. tekem za vse proste
+        $gamesPlayed = [];
+        foreach ($free as $c) {
+            $gamesPlayed[$c->id] = 0;
+        }
+
+        // tabela parov, ki so že igrali (normaliziran ključ "manjšiId-večjiId")
+        $playedPairs = [];
+
+        foreach ($finished as $m) {
+            $c1 = $m->competitor1_id;
+            $c2 = $m->competitor2_id;
+
+            if ($c1 && isset($gamesPlayed[$c1])) {
+                $gamesPlayed[$c1]++;
+            }
+            if ($c2 && isset($gamesPlayed[$c2])) {
+                $gamesPlayed[$c2]++;
+            }
+
+            if ($c1 && $c2) {
+                $key = ($c1 < $c2) ? "{$c1}-{$c2}" : "{$c2}-{$c1}";
+                $playedPairs[$key] = true;
+            }
+        }
+
+        // 5) Poišči NAJBOLJ FER par med prostimi:
+        //    - par, ki ŠE NI igral skupaj
+        //    - minimizira max(odigrane igre A, odigrane igre B)
+        //    - in ob izenačenju še vsoto (A+B)
+
         $n = count($free);
+        $bestPair = null;
+        $bestMax  = PHP_INT_MAX;
+        $bestSum  = PHP_INT_MAX;
+
         for ($i = 0; $i < $n; $i++) {
+            $a = $free[$i];
+
             for ($j = $i + 1; $j < $n; $j++) {
-                $pairs[] = [$free[$i], $free[$j]];
+                $b = $free[$j];
+
+                $key = ($a->id < $b->id)
+                    ? "{$a->id}-{$b->id}"
+                    : "{$b->id}-{$a->id}";
+
+                // ta par je ŽE igral → preskoči
+                if (isset($playedPairs[$key])) {
+                    continue;
+                }
+
+                $ga = $gamesPlayed[$a->id] ?? 0;
+                $gb = $gamesPlayed[$b->id] ?? 0;
+
+                $max = max($ga, $gb);
+                $sum = $ga + $gb;
+
+                if ($max < $bestMax || ($max === $bestMax && $sum < $bestSum)) {
+                    $bestMax  = $max;
+                    $bestSum  = $sum;
+                    $bestPair = [$a, $b];
+                }
             }
         }
 
-        // filtriraj pare, ki še niso igrali skupaj
-        $validPairs = [];
-        foreach ($pairs as [$a, $b]) {
-            $alreadyPlayed = $matchesTable->find()
-                ->where([
-                    'tournament_event_id' => $eventId,
-                    'status' => 'finished',
-                    'OR' => [
-                        ['competitor1_id' => $a->id, 'competitor2_id' => $b->id],
-                        ['competitor1_id' => $b->id, 'competitor2_id' => $a->id],
-                    ],
-                ])
-                ->count();
-
-            if ($alreadyPlayed === 0) {
-                $validPairs[] = [$a, $b];
-            }
-        }
-
-        if (empty($validPairs)) {
+        if ($bestPair === null) {
+            // ni NOVEGA para, ki še ni igral → ne delaj ponovitev!
             $this->Flash->info('Ni več novih parov, ki še niso igrali med sabo. Turnir je morda pri koncu.');
             return $this->redirect("/tournament-events/control/{$eventId}");
         }
 
-        // random par
-        shuffle($validPairs);
-        [$p1, $p2] = $validPairs[0];
+        [$p1, $p2] = $bestPair;
 
+        // 6) Ustvari novo tekmo
         $match = $matchesTable->newEmptyEntity();
         $match = $matchesTable->patchEntity($match, [
             'tournament_event_id' => $eventId,
-            'competitor1_id' => $p1->id,
-            'competitor2_id' => $p2->id,
-            'court_id' => $courtId,
-            'status' => 'in_progress',
-            'started_at' => FrozenTime::now(),
+            'competitor1_id'      => $p1->id,
+            'competitor2_id'      => $p2->id,
+            'court_id'            => $courtId,
+            'status'              => 'in_progress',
+            'started_at'          => FrozenTime::now(),
         ]);
 
         if ($matchesTable->save($match)) {

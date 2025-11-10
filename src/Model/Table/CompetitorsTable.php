@@ -104,4 +104,10 @@ class CompetitorsTable extends Table {
 
         return $rules;
     }
+
+    public function getCompetitorsForEvent(int $tournamentEventId): SelectQuery {
+        return $this->find('list')
+            ->where(['tournament_event_id' => $tournamentEventId])
+            ->orderByAsc('seed');
+    }
 }

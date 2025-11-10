@@ -16,7 +16,7 @@ $this->assign('title', 'Dodaj tekmo');
             </p>
         </div>
         <div class="bt-actions">
-            <?= $this->Html->link('Nazaj na seznam', ['action' => 'index'], [
+            <?= $this->Html->link('Nazaj na seznam', ['controller' => 'TournamentEvents', 'action' => 'view', $tournament_event_id], [
                 'class' => 'bt-button-secondary',
             ]) ?>
         </div>

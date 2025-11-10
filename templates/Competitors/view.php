@@ -23,18 +23,22 @@ $this->assign('title', 'Tekmovalec – ' . $competitor->name);
             </p>
         </div>
         <div class="bt-actions">
-            <?= $this->Html->link('Nazaj na seznam', ['action' => 'index'], [
-                'class' => 'bt-button-secondary',
-            ]) ?>
-            <?php if (!empty($competitor->tournament_event_id)): ?>
-                <?= $this->Html->link('Dogodek', [
-                    'controller' => 'TournamentEvents',
-                    'action' => 'view',
-                    $competitor->tournament_event_id,
-                ], ['class' => 'bt-button-secondary']) ?>
-            <?php endif; ?>
+            <?= $this->Html->link('Dogodek', [
+                'controller' => 'TournamentEvents',
+                'action' => 'view',
+                $competitor->tournament_event_id,
+            ], ['class' => 'bt-button-secondary']) ?>
+            <?= $this->Html->link(
+                'Dodaj igralca',
+                ['controller' => 'CompetitorPlayers', 'action' => 'add', $competitor->id],
+                ['class' => 'bt-button-secondary']
+            ) ?>
             <?= $this->Html->link('Uredi', ['action' => 'edit', $competitor->id], [
                 'class' => 'bt-button',
+            ]) ?>
+            <?= $this->Form->postLink('Izbriši', ['action' => 'delete', $competitor->id], [
+                'confirm' => 'Res želiš izbrisati ta dogodek?',
+                'class' => 'bt-button-secondary text-rose-700 border-rose-300 hover:bg-rose-50',
             ]) ?>
         </div>
     </div>

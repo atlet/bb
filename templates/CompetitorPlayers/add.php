@@ -1,31 +1,34 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\CompetitorPlayer $competitorPlayer
- * @var \Cake\Collection\CollectionInterface|string[] $competitors
- * @var \Cake\Collection\CollectionInterface|string[] $players
+ * @var \App\Model\Entity\Competitor $competitor
+ * @var array $players
  */
+
+$this->assign('title', 'Dodaj igralca v ekipo');
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Competitor Players'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+
+<div class="bt-page">
+    <div class="bt-header">
+        <div>
+            <h1 class="bt-header-title">Dodaj igralca v ekipo</h1>
+            <p class="bt-header-subtitle">
+                Dodaj novega igralca v par / ekipo:
+                <strong><?= h($competitor->name) ?></strong>
+            </p>
         </div>
-    </aside>
-    <div class="column column-80">
-        <div class="competitorPlayers form content">
-            <?= $this->Form->create($competitorPlayer) ?>
-            <fieldset>
-                <legend><?= __('Add Competitor Player') ?></legend>
-                <?php
-                    echo $this->Form->control('competitor_id', ['options' => $competitors]);
-                    echo $this->Form->control('player_id', ['options' => $players]);
-                    echo $this->Form->control('position');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+        <div class="bt-actions">
+            <?= $this->Html->link('Nazaj na ekipo', "/competitors/view/{$competitor->id}", [
+                'class' => 'bt-button-secondary',
+            ]) ?>
+        </div>
+    </div>
+
+    <div class="bt-card">
+        <div class="px-4 py-4">
+            <?= $this->element('CompetitorPlayers/form') ?>
         </div>
     </div>
 </div>

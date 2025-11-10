@@ -40,19 +40,20 @@ class CourtsController extends AppController {
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add() {
+    public function add($tournament_id) {
         $court = $this->Courts->newEmptyEntity();
         if ($this->request->is('post')) {
             $court = $this->Courts->patchEntity($court, $this->request->getData());
+            $court->tournament_id = $tournament_id;
             if ($this->Courts->save($court)) {
-                $this->Flash->success(__('The court has been saved.'));
+                $this->Flash->success(__('Zapis je bil uspešno shranjen.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => 'Tournaments', 'action' => 'view', $tournament_id]);
             }
-            $this->Flash->error(__('The court could not be saved. Please, try again.'));
+            $this->Flash->error(__('Napaka pri shranjevanju. Prosim, odpravite napake.'));
         }
-        $tournaments = $this->Courts->Tournaments->find('list', limit: 200)->all();
-        $this->set(compact('court', 'tournaments'));
+
+        $this->set(compact('court', 'tournament_id'));
     }
 
     /**
@@ -64,17 +65,18 @@ class CourtsController extends AppController {
      */
     public function edit($id = null) {
         $court = $this->Courts->get($id, contain: []);
+        $tournament_id = $court->tournament_id;
         if ($this->request->is(['patch', 'post', 'put'])) {
             $court = $this->Courts->patchEntity($court, $this->request->getData());
             if ($this->Courts->save($court)) {
                 $this->Flash->success(__('The court has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => 'Tournaments', 'action' => 'view', $court->tournament_id]);
             }
             $this->Flash->error(__('The court could not be saved. Please, try again.'));
         }
-        $tournaments = $this->Courts->Tournaments->find('list', limit: 200)->all();
-        $this->set(compact('court', 'tournaments'));
+
+        $this->set(compact('court', 'tournament_id'));
     }
 
     /**
@@ -87,12 +89,13 @@ class CourtsController extends AppController {
     public function delete($id = null) {
         $this->request->allowMethod(['post', 'delete']);
         $court = $this->Courts->get($id);
+        $tournament_id = $court->tournament_id;
         if ($this->Courts->delete($court)) {
             $this->Flash->success(__('The court has been deleted.'));
         } else {
             $this->Flash->error(__('The court could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller' => 'Tournaments', 'action' => 'view', $court->tournament_id]);
     }
 }

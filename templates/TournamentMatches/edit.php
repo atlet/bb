@@ -20,7 +20,7 @@ $this->assign('title', 'Uredi tekmo #' . $tournamentMatch->id);
             </p>
         </div>
         <div class="bt-actions">
-            <?= $this->Html->link('Nazaj na seznam', ['action' => 'index'], [
+            <?= $this->Html->link('Nazaj na seznam', ['controller' => 'TournamentEvents', 'action' => 'view', $tournamentMatch->tournament_event_id], [
                 'class' => 'bt-button-secondary',
             ]) ?>
             <?= $this->Form->postLink('Izbriši', ['action' => 'delete', $tournamentMatch->id], [

@@ -49,19 +49,7 @@
                     <?= $this->Html->link('Turnirji', ['controller' => 'Tournaments', 'action' => 'index'], [
                         'class' => 'hover:text-primary-600'
                     ]) ?>
-                    <?= $this->Html->link('Igrišča', ['controller' => 'Courts', 'action' => 'index'], [
-                        'class' => 'hover:text-primary-600'
-                    ]) ?>
-                    <?= $this->Html->link('Dogodki', ['controller' => 'TournamentEvents', 'action' => 'index'], [
-                        'class' => 'hover:text-primary-600'
-                    ]) ?>
                     <?= $this->Html->link('Igralci', ['controller' => 'Players', 'action' => 'index'], [
-                        'class' => 'hover:text-primary-600'
-                    ]) ?>
-                    <?= $this->Html->link('Tekmovalci', ['controller' => 'Competitors', 'action' => 'index'], [
-                        'class' => 'hover:text-primary-600'
-                    ]) ?>
-                    <?= $this->Html->link('Tekme', ['controller' => 'TournamentMatches', 'action' => 'index'], [
                         'class' => 'hover:text-primary-600'
                     ]) ?>
                 </nav>
@@ -92,19 +80,7 @@
                     <?= $this->Html->link('Turnirji', ['controller' => 'Tournaments', 'action' => 'index'], [
                         'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
                     ]) ?>
-                    <?= $this->Html->link('Igrišča', ['controller' => 'Courts', 'action' => 'index'], [
-                        'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
-                    ]) ?>
-                    <?= $this->Html->link('Dogodki', ['controller' => 'TournamentEvents', 'action' => 'index'], [
-                        'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
-                    ]) ?>
                     <?= $this->Html->link('Igralci', ['controller' => 'Players', 'action' => 'index'], [
-                        'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
-                    ]) ?>
-                    <?= $this->Html->link('Tekmovalci', ['controller' => 'Competitors', 'action' => 'index'], [
-                        'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
-                    ]) ?>
-                    <?= $this->Html->link('Tekme', ['controller' => 'TournamentMatches', 'action' => 'index'], [
                         'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
                     ]) ?>
                 </div>

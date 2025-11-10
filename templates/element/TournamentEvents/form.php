@@ -9,13 +9,7 @@
 
 <?= $this->Form->create($tournamentEvent, ['class' => 'bt-form space-y-4']) ?>
 
-<div class="bt-form-group">
-    <?= $this->Form->control('tournament_id', [
-        'label' => 'Turnir',
-        'options' => $tournaments,
-        'empty' => '-- izberi turnir --',
-    ]) ?>
-</div>
+<?= $this->Form->hidden('tournament_id') ?>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="bt-form-group">
@@ -62,7 +56,7 @@
 </div>
 
 <div class="mt-4 flex justify-end gap-2">
-    <?= $this->Html->link('Prekliči', ['action' => 'index'], [
+    <?= $this->Html->link('Prekliči', ['controller' => 'Tournaments', 'action' => 'view', $tournament_id], [
         'class' => 'bt-button-secondary',
     ]) ?>
     <?= $this->Form->button('Shrani', ['class' => 'bt-button']) ?>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\TournamentEvent $event
@@ -23,9 +24,6 @@ $tournament = $tournamentEvent->tournament ?? null;
             </p>
         </div>
         <div class="bt-actions flex flex-wrap gap-2">
-            <?= $this->Html->link('Nazaj na seznam', ['action' => 'index'], [
-                'class' => 'bt-button-secondary',
-            ]) ?>
             <?php if ($tournament): ?>
                 <?= $this->Html->link('Nazaj na turnir', [
                     'controller' => 'Tournaments',
@@ -37,9 +35,6 @@ $tournament = $tournamentEvent->tournament ?? null;
                 'class' => 'bt-button-secondary',
             ]) ?>
             <?= $this->Html->link('Lestvica', ['action' => 'standings', $tournamentEvent->id], [
-                'class' => 'bt-button-secondary',
-            ]) ?>
-            <?= $this->Html->link('Žreb parov', ['action' => 'drawPairs', $tournamentEvent->id], [
                 'class' => 'bt-button-secondary',
             ]) ?>
             <?= $this->Html->link('Uredi', ['action' => 'edit', $tournamentEvent->id], [
@@ -123,7 +118,7 @@ $tournament = $tournamentEvent->tournament ?? null;
                         <?= $this->Html->link('Dodaj tekmovalca', [
                             'controller' => 'Competitors',
                             'action' => 'add',
-                            '?' => ['tournament_event_id' => $tournamentEvent->id],
+                            $tournamentEvent->id,
                         ], ['class' => 'bt-button-secondary text-[11px]']) ?>
                     </div>
                 </div>
@@ -190,10 +185,10 @@ $tournament = $tournamentEvent->tournament ?? null;
                             Tekme v tem dogodku
                         </div>
                         <div>
-                            <?= $this->Html->link('Vse tekme', [
+                            <?= $this->Html->link('Vnesi novo', [
                                 'controller' => 'TournamentMatches',
-                                'action' => 'index',
-                                '?' => ['tournament_event_id' => $tournamentEvent->id],
+                                'action' => 'add',
+                                $tournamentEvent->id,
                             ], ['class' => 'bt-button-secondary text-[11px]']) ?>
                         </div>
                     </div>
@@ -201,28 +196,24 @@ $tournament = $tournamentEvent->tournament ?? null;
                         <table class="bt-table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Igrišče</th>
                                     <th>Tekmovalci</th>
-                                    <th>Status</th>
                                     <th>Rezultat</th>
+                                    <th>Status</th>
+                                    <th class="w-40 text-right">Akcije</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($tournamentEvent->tournament_matches as $m): ?>
                                     <?php
-                                        $c1 = $m->competitor1->name ?? 'TBD';
-                                        $c2 = $m->competitor2->name ?? 'TBD';
-                                        $courtName = $m->court->name ?? '–';
+                                    $c1 = $m->competitor1->name ?? 'TBD';
+                                    $c2 = $m->competitor2->name ?? 'TBD';
+                                    $courtName = $m->court->name ?? '–';
                                     ?>
                                     <tr>
-                                        <td>#<?= $m->id ?></td>
                                         <td><?= h($courtName) ?></td>
                                         <td class="text-xs">
                                             <?= h($c1) ?> <span class="text-slate-400">vs</span> <?= h($c2) ?>
-                                        </td>
-                                        <td class="text-xs">
-                                            <?= h($m->status) ?>
                                         </td>
                                         <td class="text-xs">
                                             <?php if ($m->status === 'finished'): ?>
@@ -230,6 +221,36 @@ $tournament = $tournamentEvent->tournament ?? null;
                                             <?php else: ?>
                                                 <span class="text-slate-400">–</span>
                                             <?php endif; ?>
+                                        </td>
+                                        <td class="text-xs">
+                                            <?php
+                                            $status = $m->status;
+                                            $statusLabel = $status;
+                                            $statusClass = 'text-xs rounded-full px-2 py-0.5';
+
+                                            switch ($status) {
+                                                case 'in_progress':
+                                                    $statusLabel = 'v teku';
+                                                    $statusClass .= ' bg-amber-50 text-amber-700';
+                                                    break;
+                                                case 'finished':
+                                                    $statusLabel = 'končana';
+                                                    $statusClass .= ' bg-emerald-50 text-emerald-700';
+                                                    break;
+                                                default:
+                                                    $statusLabel = $status ?: 'planirana';
+                                                    $statusClass .= ' bg-slate-100 text-slate-600';
+                                                    break;
+                                            }
+                                            ?>
+                                            <span class="<?= $statusClass ?>"><?= h($statusLabel) ?></span>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="flex justify-end gap-1">
+                                                <?= $this->Html->link('Pogled', ['controller' => 'tournamentMatches', 'action' => 'view', $m->id], [
+                                                    'class' => 'bt-button-secondary text-[11px]',
+                                                ]) ?>
+                                            </div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

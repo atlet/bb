@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Entity;
@@ -18,8 +19,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\CompetitorPlayer[] $competitor_players
  */
-class Player extends Entity
-{
+class Player extends Entity {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -30,12 +30,13 @@ class Player extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
-        'first_name' => true,
-        'last_name' => true,
-        'gender' => true,
-        'rating' => true,
-        'created' => true,
-        'modified' => true,
-        'competitor_players' => true,
+        '*' => true,
+        'id' => false,
     ];
+
+    protected array $_virtual = ['full_name'];
+
+    protected function _getFullName(): string {
+        return trim(($this->first_name ?? '') . ' ' . ($this->last_name ?? ''));
+    }
 }

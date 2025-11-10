@@ -24,21 +24,16 @@ $court = $tournamentMatch->court->name ?? '–';
             </p>
         </div>
         <div class="bt-actions">
-            <?= $this->Html->link('Nazaj na seznam', ['action' => 'index'], [
-                'class' => 'bt-button-secondary',
-            ]) ?>
-            <?php if ($event): ?>
-                <?= $this->Html->link('Dogodek', [
-                    'controller' => 'TournamentEvents',
-                    'action' => 'view',
-                    $event->id,
-                ], ['class' => 'bt-button-secondary']) ?>
-                <?= $this->Html->link('Kontrola dogodka', [
-                    'controller' => 'TournamentEvents',
-                    'action' => 'control',
-                    $event->id,
-                ], ['class' => 'bt-button-secondary']) ?>
-            <?php endif; ?>
+            <?= $this->Html->link('Dogodek', [
+                'controller' => 'TournamentEvents',
+                'action' => 'view',
+                $event->id,
+            ], ['class' => 'bt-button-secondary']) ?>
+            <?= $this->Html->link('Kontrola dogodka', [
+                'controller' => 'TournamentEvents',
+                'action' => 'control',
+                $event->id,
+            ], ['class' => 'bt-button-secondary']) ?>
             <?= $this->Html->link('Uredi', ['action' => 'edit', $tournamentMatch->id], [
                 'class' => 'bt-button',
             ]) ?>

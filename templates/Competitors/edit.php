@@ -18,7 +18,7 @@ $this->assign('title', 'Uredi tekmovalca – ' . $competitor->name);
             </p>
         </div>
         <div class="bt-actions">
-            <?= $this->Html->link('Nazaj na seznam', ['action' => 'index'], [
+            <?= $this->Html->link('Nazaj na seznam', "/tournament-events/view/{$tournament_event_id}", [
                 'class' => 'bt-button-secondary',
             ]) ?>
             <?= $this->Form->postLink('Izbriši', ['action' => 'delete', $competitor->id], [

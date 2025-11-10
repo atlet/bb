@@ -30,6 +30,43 @@ $this->assign('title', 'Kontrola – ' . $event->name);
         </div>
     </div>
 
+    <!-- STATISTIKA PAROV -->
+    <?php if (!empty($pairStats)): ?>
+        <div class="bt-card mb-4">
+            <div class="px-4 py-3 border-b border-border-soft bg-slate-50 flex flex-wrap justify-between items-center gap-2">
+                <div class="text-xs font-semibold uppercase text-slate-500">
+                    Statistika parov (brez ponovitev)
+                </div>
+            </div>
+            <div class="px-4 py-3 text-xs text-slate-700 grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div>
+                    <div class="text-[11px] text-slate-500">Aktivni tekmovalci</div>
+                    <div class="text-sm font-semibold">
+                        <?= (int)$pairStats['active_competitors'] ?>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-[11px] text-slate-500">Vseh možnih parov</div>
+                    <div class="text-sm font-semibold">
+                        <?= (int)$pairStats['total_pairs'] ?>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-[11px] text-slate-500">Že odigranih unikatnih parov</div>
+                    <div class="text-sm font-semibold text-emerald-700">
+                        <?= (int)$pairStats['played_pairs'] ?>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-[11px] text-slate-500">Še možnih novih parov</div>
+                    <div class="text-sm font-semibold <?= $pairStats['remaining_pairs'] > 0 ? 'text-primary-600' : 'text-slate-500' ?>">
+                        <?= (int)$pairStats['remaining_pairs'] ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <?php foreach ($courts as $court): ?>
             <?php

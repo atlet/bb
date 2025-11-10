@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -7,6 +8,7 @@ use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Datasource\EntityInterface;
 
 /**
  * CompetitorPlayers Model
@@ -30,16 +32,14 @@ use Cake\Validation\Validator;
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class CompetitorPlayersTable extends Table
-{
+class CompetitorPlayersTable extends Table {
     /**
      * Initialize method
      *
      * @param array<string, mixed> $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config): void
-    {
+    public function initialize(array $config): void {
         parent::initialize($config);
 
         $this->setTable('competitor_players');
@@ -64,8 +64,7 @@ class CompetitorPlayersTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator): Validator
-    {
+    public function validationDefault(Validator $validator): Validator {
         $validator
             ->notEmptyString('competitor_id');
 
@@ -85,12 +84,38 @@ class CompetitorPlayersTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules): RulesChecker
-    {
+    public function buildRules(RulesChecker $rules): RulesChecker {
         $rules->add($rules->isUnique(['competitor_id', 'player_id']), ['errorField' => 'competitor_id']);
         $rules->add($rules->isUnique(['competitor_id', 'position']), ['errorField' => 'competitor_id']);
         $rules->add($rules->existsIn(['competitor_id'], 'Competitors'), ['errorField' => 'competitor_id']);
         $rules->add($rules->existsIn(['player_id'], 'Players'), ['errorField' => 'player_id']);
+
+        $rules->add(function (EntityInterface $entity, $options) {
+            $competitor = $this->Competitors->get(
+                $entity->competitor_id,
+                ['fields' => ['id', 'tournament_event_id']]
+            );
+
+            $eventId = $competitor->tournament_event_id;
+
+            $query = $this->find()
+                ->matching('Competitors', function ($q) use ($eventId) {
+                    return $q->where(['Competitors.tournament_event_id' => $eventId]);
+                })
+                ->where([
+                    'CompetitorPlayers.player_id' => $entity->player_id,
+                ]);
+
+            if (!$entity->isNew() && $entity->id) {
+                $query->where(['CompetitorPlayers.id !=' => $entity->id]);
+            }
+
+            return $query->count() === 0;
+        }, 'uniquePlayerInEvent', [
+            'errorField' => 'player_id',
+            'message' => 'Ta igralec že nastopa v drugi ekipi v istem dogodku.'
+        ]);
+
 
         return $rules;
     }

@@ -9,6 +9,7 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use Cake\Datasource\FactoryLocator;
+use Cake\ORM\TableRegistry;
 
 /**
  * TournamentMatches Model
@@ -245,5 +246,83 @@ class TournamentMatchesTable extends Table {
             $c->losses = $stats[$c->id]['losses'] ?? 0;
             $competitorsTable->saveOrFail($c);
         }
+    }
+
+    /**
+     * Vrne statistiko parov za dani dogodek:
+     * - active_competitors: št. aktivnih tekmovalcev (losses < 2)
+     * - total_pairs: koliko vseh parov je matematično možnih (N choose 2)
+     * - played_pairs: koliko unikatnih parov je že igralo (finished)
+     * - remaining_pairs: koliko novih parov še lahko odigraš brez ponovitve
+     */
+    public function countRemainingUniquePairs(int $eventId): array {
+        $Competitors = TableRegistry::getTableLocator()->get('Competitors');
+
+        // aktivni tekmovalci (še niso izpadli)
+        $activeIds = $Competitors->find()
+            ->where([
+                'tournament_event_id' => $eventId,
+                'losses <' => 2,
+            ])
+            ->select(['id'])
+            ->enableHydration(false)
+            ->all()
+            ->extract('id')
+            ->toList();
+
+        $n = count($activeIds);
+
+        if ($n < 2) {
+            return [
+                'active_competitors' => $n,
+                'total_pairs' => 0,
+                'played_pairs' => 0,
+                'remaining_pairs' => 0,
+            ];
+        }
+
+        // skupaj možnih parov = N * (N - 1) / 2
+        $totalPairs = (int) (($n * ($n - 1)) / 2);
+
+        // kdo je dejansko med aktivnimi
+        $idSet = array_fill_keys($activeIds, true);
+
+        // preberi vse odigrane tekme (finished) z obema competitorjema != null
+        $finished = $this->find()
+            ->select(['competitor1_id', 'competitor2_id'])
+            ->where([
+                'tournament_event_id' => $eventId,
+                'status' => 'finished',
+                'competitor1_id IS NOT' => null,
+                'competitor2_id IS NOT' => null,
+            ])
+            ->enableHydration(false)
+            ->all();
+
+        // unikatni pari med aktivnimi tekmovalci
+        $playedPairs = [];
+
+        foreach ($finished as $m) {
+            $c1 = (int)$m['competitor1_id'];
+            $c2 = (int)$m['competitor2_id'];
+
+            // štejejo samo pari, kjer sta oba še aktivna
+            if (empty($idSet[$c1]) || empty($idSet[$c2])) {
+                continue;
+            }
+
+            $key = $c1 < $c2 ? "{$c1}-{$c2}" : "{$c2}-{$c1}";
+            $playedPairs[$key] = true;
+        }
+
+        $playedCount    = count($playedPairs);
+        $remainingPairs = max(0, $totalPairs - $playedCount);
+
+        return [
+            'active_competitors' => $n,
+            'total_pairs'        => $totalPairs,
+            'played_pairs'       => $playedCount,
+            'remaining_pairs'    => $remainingPairs,
+        ];
     }
 }

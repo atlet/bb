@@ -43,19 +43,20 @@ class TournamentEventsController extends AppController {
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add() {
+    public function add($tournament_id) {
         $tournamentEvent = $this->TournamentEvents->newEmptyEntity();
         if ($this->request->is('post')) {
             $tournamentEvent = $this->TournamentEvents->patchEntity($tournamentEvent, $this->request->getData());
+            $tournamentEvent->tournament_id = $tournament_id;
             if ($this->TournamentEvents->save($tournamentEvent)) {
                 $this->Flash->success(__('The tournament event has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => 'Tournaments', 'action' => 'view', $tournament_id]);
             }
             $this->Flash->error(__('The tournament event could not be saved. Please, try again.'));
         }
-        $tournaments = $this->TournamentEvents->Tournaments->find('list', limit: 200)->all();
-        $this->set(compact('tournamentEvent', 'tournaments'));
+
+        $this->set(compact('tournamentEvent', 'tournament_id'));
     }
 
     /**
@@ -67,17 +68,18 @@ class TournamentEventsController extends AppController {
      */
     public function edit($id = null) {
         $tournamentEvent = $this->TournamentEvents->get($id, contain: []);
+        $tournament_id = $tournamentEvent->tournament_id;
         if ($this->request->is(['patch', 'post', 'put'])) {
             $tournamentEvent = $this->TournamentEvents->patchEntity($tournamentEvent, $this->request->getData());
             if ($this->TournamentEvents->save($tournamentEvent)) {
                 $this->Flash->success(__('The tournament event has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => 'Tournaments', 'action' => 'view', $tournament_id]);
             }
             $this->Flash->error(__('The tournament event could not be saved. Please, try again.'));
         }
-        $tournaments = $this->TournamentEvents->Tournaments->find('list', limit: 200)->all();
-        $this->set(compact('tournamentEvent', 'tournaments'));
+
+        $this->set(compact('tournamentEvent', 'tournament_id'));
     }
 
     /**
@@ -90,13 +92,14 @@ class TournamentEventsController extends AppController {
     public function delete($id = null) {
         $this->request->allowMethod(['post', 'delete']);
         $tournamentEvent = $this->TournamentEvents->get($id);
+        $tournament_id = $tournamentEvent->tournament_id;
         if ($this->TournamentEvents->delete($tournamentEvent)) {
             $this->Flash->success(__('The tournament event has been deleted.'));
         } else {
             $this->Flash->error(__('The tournament event could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller' => 'Tournaments', 'action' => 'view', $tournament_id]);
     }
 
     /**
@@ -116,24 +119,73 @@ class TournamentEventsController extends AppController {
         ]);
 
         $courts = $event->tournament->courts ?? [];
+        $pairStats = $this->fetchTable('TournamentMatches')->countRemainingUniquePairs((int)$id);
 
-        $this->set(compact('event', 'courts'));
+        $this->set(compact('event', 'courts', 'pairStats'));
     }
 
     /**
-     * Lestvica – razvrstitev po wins/losses.
+     * Lestvica – razvrstitev po wins/losses + head-to-head.
      */
     public function standings($id = null) {
         $event = $this->TournamentEvents->get($id, [
-            'contain' => ['Competitors'],
+            'contain' => [
+                'Competitors',
+                'TournamentMatches' => [
+                    'conditions' => ['TournamentMatches.status' => 'finished'],
+                ],
+            ],
         ]);
 
-        $competitors = collection($event->competitors)
-            ->sortBy('losses')
-            ->sortBy('wins', SORT_DESC);
+        // HEAD-TO-HEAD matrika
+        $h2h = [];
+
+        foreach ($event->tournament_matches as $match) {
+            if (!$match->winner_id || !$match->competitor1_id || !$match->competitor2_id) {
+                continue;
+            }
+
+            $winnerId = $match->winner_id;
+            $loserId = ($match->competitor1_id == $winnerId)
+                ? $match->competitor2_id
+                : $match->competitor1_id;
+
+            $h2h[$winnerId][$loserId] = ($h2h[$winnerId][$loserId] ?? 0) + 1;
+        }
+
+        // Pretvorba v array, ne glede na tip
+        $competitors = is_array($event->competitors)
+            ? $event->competitors
+            : $event->competitors->toList();
+
+        // Sortiraj po wins DESC, losses ASC, head-to-head, name
+        usort($competitors, function ($a, $b) use ($h2h) {
+            // 1. Zmage DESC
+            if ($a->wins !== $b->wins) {
+                return $a->wins < $b->wins ? 1 : -1;
+            }
+
+            // 2. Porazi ASC
+            if ($a->losses !== $b->losses) {
+                return $a->losses > $b->losses ? 1 : -1;
+            }
+
+            // 3. Head-to-head
+            $aBeatB = $h2h[$a->id][$b->id] ?? 0;
+            $bBeatA = $h2h[$b->id][$a->id] ?? 0;
+
+            if ($aBeatB !== $bBeatA) {
+                return $aBeatB < $bBeatA ? 1 : -1;
+            }
+
+            // 4. Fallback – ime ali ID
+            return strcasecmp((string)$a->name, (string)$b->name);
+        });
 
         $this->set(compact('event', 'competitors'));
     }
+
+
 
     /**
      * Žreb parov za dvojice – izbereš igralce, sistem ustvari Competitors + CompetitorPlayers.

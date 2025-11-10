@@ -95,7 +95,7 @@ $this->assign('title', 'Turnir – ' . $tournament->name);
                         <?= $this->Html->link('Dodaj dogodek', [
                             'controller' => 'TournamentEvents',
                             'action' => 'add',
-                            '?' => ['tournament_id' => $tournament->id],
+                            $tournament->id,
                         ], ['class' => 'bt-button-secondary text-[11px]']) ?>
                     </div>
                 </div>
@@ -156,7 +156,7 @@ $this->assign('title', 'Turnir – ' . $tournament->name);
                         <?= $this->Html->link('Dodaj igrišče', [
                             'controller' => 'Courts',
                             'action' => 'add',
-                            '?' => ['tournament_id' => $tournament->id],
+                            $tournament->id,
                         ], ['class' => 'bt-button-secondary text-[11px]']) ?>
                     </div>
                 </div>
@@ -171,6 +171,7 @@ $this->assign('title', 'Turnir – ' . $tournament->name);
                                 <tr>
                                     <th>Ime igrišča</th>
                                     <th class="text-center">Vrstni red</th>
+                                    <th class="w-32 text-right">Akcije</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -179,6 +180,17 @@ $this->assign('title', 'Turnir – ' . $tournament->name);
                                         <td><?= h($court->name) ?></td>
                                         <td class="text-center text-xs">
                                             <?= (int)$court->sort_order ?>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="flex justify-end gap-1">                                                
+                                                <?= $this->Html->link('Uredi', ['controller' => 'Courts', 'action' => 'edit', $court->id], [
+                                                    'class' => 'bt-button-secondary text-[11px]',
+                                                ]) ?>
+                                                <?= $this->Form->postLink('Izbriši', ['controller' => 'Courts', 'action' => 'delete', $court->id], [
+                                                    'confirm' => 'Res želiš izbrisati to igrišče?',
+                                                    'class' => 'bt-button-secondary text-[11px] text-rose-700 border-rose-300 hover:bg-rose-50',
+                                                ]) ?>
+                                            </div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
