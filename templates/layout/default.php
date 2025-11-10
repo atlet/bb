@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Default layout – Tailwind + isti stil kot prej narisani HTMLji
  *
@@ -7,6 +8,7 @@
 ?>
 <!doctype html>
 <html lang="sl">
+
 <head>
     <?= $this->Html->charset() ?>
     <title>
@@ -20,66 +22,131 @@
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body class="bg-slate-100 text-slate-900">
-<div class="min-h-screen flex flex-col">
 
-    <!-- TOP BAR / HEADER - isti vibe kot prej -->
-    <header class="bg-white shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <span class="inline-flex items-center justify-center w-8 h-8 rounded-2xl bg-slate-900 text-white text-xs font-bold">
-                    BT
-                </span>
-                <div>
-                    <div class="text-sm font-semibold text-slate-800">
-                        Badminton Tools
-                    </div>
-                    <div class="text-xs text-slate-500">
-                        Turnirski nadzor · admin
+<body class="bg-slate-100 text-slate-900">
+    <div class="min-h-screen flex flex-col">
+
+        <!-- TOP BAR / HEADER - isti vibe, zdaj responsive -->
+        <header class="bg-white shadow-sm">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+                <!-- Logo + naslov -->
+                <div class="flex items-center gap-2">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-2xl bg-slate-900 text-white text-xs font-bold">
+                        BT
+                    </span>
+                    <div>
+                        <div class="text-sm font-semibold text-slate-800">
+                            Badminton Tools
+                        </div>
+                        <div class="text-xs text-slate-500">
+                            Turnirski nadzor · admin
+                        </div>
                     </div>
                 </div>
+
+                <!-- DESKTOP NAV -->
+                <nav class="hidden md:flex items-center gap-4 text-xs text-slate-600">
+                    <?= $this->Html->link('Turnirji', ['controller' => 'Tournaments', 'action' => 'index'], [
+                        'class' => 'hover:text-primary-600'
+                    ]) ?>
+                    <?= $this->Html->link('Igrišča', ['controller' => 'Courts', 'action' => 'index'], [
+                        'class' => 'hover:text-primary-600'
+                    ]) ?>
+                    <?= $this->Html->link('Dogodki', ['controller' => 'TournamentEvents', 'action' => 'index'], [
+                        'class' => 'hover:text-primary-600'
+                    ]) ?>
+                    <?= $this->Html->link('Igralci', ['controller' => 'Players', 'action' => 'index'], [
+                        'class' => 'hover:text-primary-600'
+                    ]) ?>
+                    <?= $this->Html->link('Tekmovalci', ['controller' => 'Competitors', 'action' => 'index'], [
+                        'class' => 'hover:text-primary-600'
+                    ]) ?>
+                    <?= $this->Html->link('Tekme', ['controller' => 'TournamentMatches', 'action' => 'index'], [
+                        'class' => 'hover:text-primary-600'
+                    ]) ?>
+                </nav>
+
+                <!-- MOBILE HAMBURGER -->
+                <button
+                    id="mobile-menu-toggle"
+                    type="button"
+                    class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-slate-200 text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    aria-controls="mobile-menu"
+                    aria-expanded="false">
+                    <span class="sr-only">Odpri meni</span>
+                    <!-- ikona hamburger -->
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
             </div>
 
-            <nav class="flex items-center gap-4 text-xs text-slate-600">
-                <?= $this->Html->link('Turnirji', ['controller' => 'Tournaments', 'action' => 'index'], [
-                    'class' => 'hover:text-primary-600'
-                ]) ?>
-                <?= $this->Html->link('Igrišča', ['controller' => 'Courts', 'action' => 'index'], [
-                    'class' => 'hover:text-primary-600'
-                ]) ?>
-                <?= $this->Html->link('Dogodki', ['controller' => 'TournamentEvents', 'action' => 'index'], [
-                    'class' => 'hover:text-primary-600'
-                ]) ?>
-                <?= $this->Html->link('Igralci', ['controller' => 'Players', 'action' => 'index'], [
-                    'class' => 'hover:text-primary-600'
-                ]) ?>
-                <?= $this->Html->link('Tekmovalci', ['controller' => 'Competitors', 'action' => 'index'], [
-                    'class' => 'hover:text-primary-600'
-                ]) ?>
-                <?= $this->Html->link('Tekme', ['controller' => 'TournamentMatches', 'action' => 'index'], [
-                    'class' => 'hover:text-primary-600'
-                ]) ?>
+            <!-- MOBILE NAV (pod headerjem) -->
+            <nav
+                id="mobile-menu"
+                class="hidden md:hidden border-t border-slate-200 bg-white">
+                <div class="max-w-6xl mx-auto px-4 py-2 flex flex-col gap-1 text-xs text-slate-700">
+                    <?= $this->Html->link('Turnirji', ['controller' => 'Tournaments', 'action' => 'index'], [
+                        'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
+                    ]) ?>
+                    <?= $this->Html->link('Igrišča', ['controller' => 'Courts', 'action' => 'index'], [
+                        'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
+                    ]) ?>
+                    <?= $this->Html->link('Dogodki', ['controller' => 'TournamentEvents', 'action' => 'index'], [
+                        'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
+                    ]) ?>
+                    <?= $this->Html->link('Igralci', ['controller' => 'Players', 'action' => 'index'], [
+                        'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
+                    ]) ?>
+                    <?= $this->Html->link('Tekmovalci', ['controller' => 'Competitors', 'action' => 'index'], [
+                        'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
+                    ]) ?>
+                    <?= $this->Html->link('Tekme', ['controller' => 'TournamentMatches', 'action' => 'index'], [
+                        'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
+                    ]) ?>
+                </div>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <!-- FLASH MESSAGES -->
-    <div class="max-w-6xl mx-auto w-full px-4 mt-4">
-        <?= $this->Flash->render() ?>
+        <!-- MAIN CONTENT -->
+        <main class="flex-1">
+            <div class="max-w-6xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
+                <!-- Flash -->
+                <div class="mb-3">
+                    <?= $this->Flash->render() ?>
+                </div>
+
+                <!-- Content -->
+                <?= $this->fetch('content') ?>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="mt-auto border-t border-slate-200 bg-white">
+            <div class="max-w-6xl mx-auto px-4 py-3 text-[11px] text-slate-500 flex items-center justify-between">
+                <span>© <?= date('Y') ?> Badminton Tools</span>
+                <span>SQLite · CakePHP · Tailwind</span>
+            </div>
+        </footer>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-4">
-        <?= $this->fetch('content') ?>
-    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var btn = document.getElementById('mobile-menu-toggle');
+            var menu = document.getElementById('mobile-menu');
+            if (!btn || !menu) return;
 
-    <!-- FOOTER -->
-    <footer class="mt-auto border-t border-slate-200 bg-white">
-        <div class="max-w-6xl mx-auto px-4 py-3 text-[11px] text-slate-500 flex items-center justify-between">
-            <span>© <?= date('Y') ?> Badminton Tools</span>
-            <span>SQLite · CakePHP · Tailwind</span>
-        </div>
-    </footer>
-</div>
+            btn.addEventListener('click', function() {
+                menu.classList.toggle('hidden');
+                var expanded = btn.getAttribute('aria-expanded') === 'true';
+                btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+            });
+        });
+    </script>
+
 </body>
+
 </html>
