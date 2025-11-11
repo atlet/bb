@@ -97,45 +97,47 @@ $this->assign('title', 'Igralec – ' . $player->first_name . ' ' . $player->las
                             Ta igralec trenutno ni dodeljen nobenemu paru / ekipi.
                         </p>
                     <?php else: ?>
-                        <table class="bt-table">
-                            <thead>
-                                <tr>
-                                    <th>Par / ekipa</th>
-                                    <th>Pozicija</th>
-                                    <th>Dogodek</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($player->competitor_players as $cp): ?>
-                                    <?php $comp = $cp->competitor ?? null; ?>
+                        <div class="bt-table-wrapper">
+                            <table class="bt-table">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <?php if ($comp): ?>
-                                                <?= $this->Html->link(
-                                                    h($comp->name),
-                                                    ['controller' => 'Competitors', 'action' => 'view', $comp->id],
-                                                    ['class' => 'text-xs text-primary-600 hover:underline']
-                                                ) ?>
-                                            <?php else: ?>
-                                                <span class="text-xs text-slate-400">–</span>
-                                            <?php endif; ?>
-                                        </td>
-                                        <td>
-                                            <span class="text-xs text-slate-700">
-                                                <?= (int)$cp->position ?>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <?php if (!empty($comp->tournament_event)): ?>
-                                                <?= h($comp->tournament_event->name) ?>
-                                            <?php else: ?>
-                                                <span class="text-xs text-slate-400">–</span>
-                                            <?php endif; ?>
-                                        </td>
+                                        <th>Par / ekipa</th>
+                                        <th>Pozicija</th>
+                                        <th>Dogodek</th>
                                     </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($player->competitor_players as $cp): ?>
+                                        <?php $comp = $cp->competitor ?? null; ?>
+                                        <tr>
+                                            <td>
+                                                <?php if ($comp): ?>
+                                                    <?= $this->Html->link(
+                                                        h($comp->name),
+                                                        ['controller' => 'Competitors', 'action' => 'view', $comp->id],
+                                                        ['class' => 'text-xs text-primary-600 hover:underline']
+                                                    ) ?>
+                                                <?php else: ?>
+                                                    <span class="text-xs text-slate-400">–</span>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td>
+                                                <span class="text-xs text-slate-700">
+                                                    <?= (int)$cp->position ?>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <?php if (!empty($comp->tournament_event)): ?>
+                                                    <?= h($comp->tournament_event->name) ?>
+                                                <?php else: ?>
+                                                    <span class="text-xs text-slate-400">–</span>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
