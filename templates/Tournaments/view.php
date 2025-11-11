@@ -105,43 +105,45 @@ $this->assign('title', 'Turnir – ' . $tournament->name);
                             Ta turnir še nima dodanih dogodkov / kategorij.
                         </p>
                     <?php else: ?>
-                        <table class="bt-table">
-                            <thead>
-                                <tr>
-                                    <th>Ime dogodka</th>
-                                    <th>Koda</th>
-                                    <th>Status</th>
-                                    <th class="w-32 text-right">Akcije</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($tournament->tournament_events as $event): ?>
+                        <div class="bt-table-wrapper">
+                            <table class="bt-table">
+                                <thead>
                                     <tr>
-                                        <td><?= h($event->name) ?></td>
-                                        <td><?= h($event->code ?? '–') ?></td>
-                                        <td>
-                                            <span class="text-xs text-slate-700">
-                                                <?= h($event->status ?? 'active') ?>
-                                            </span>
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="flex justify-end gap-1">
-                                                <?= $this->Html->link('Pogled', [
-                                                    'controller' => 'TournamentEvents',
-                                                    'action' => 'view',
-                                                    $event->id,
-                                                ], ['class' => 'bt-button-secondary text-[11px]']) ?>
-                                                <?= $this->Html->link('Kontrola', [
-                                                    'controller' => 'TournamentEvents',
-                                                    'action' => 'control',
-                                                    $event->id,
-                                                ], ['class' => 'bt-button-secondary text-[11px]']) ?>
-                                            </div>
-                                        </td>
+                                        <th>Ime dogodka</th>
+                                        <th>Koda</th>
+                                        <th>Status</th>
+                                        <th class="w-32 text-right">Akcije</th>
                                     </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($tournament->tournament_events as $event): ?>
+                                        <tr>
+                                            <td><?= h($event->name) ?></td>
+                                            <td><?= h($event->code ?? '–') ?></td>
+                                            <td>
+                                                <span class="text-xs text-slate-700">
+                                                    <?= h($event->status ?? 'active') ?>
+                                                </span>
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="flex justify-end gap-1">
+                                                    <?= $this->Html->link('Pogled', [
+                                                        'controller' => 'TournamentEvents',
+                                                        'action' => 'view',
+                                                        $event->id,
+                                                    ], ['class' => 'bt-button-secondary text-[11px]']) ?>
+                                                    <?= $this->Html->link('Kontrola', [
+                                                        'controller' => 'TournamentEvents',
+                                                        'action' => 'control',
+                                                        $event->id,
+                                                    ], ['class' => 'bt-button-secondary text-[11px]']) ?>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -166,36 +168,38 @@ $this->assign('title', 'Turnir – ' . $tournament->name);
                             Ta turnir še nima dodanih igrišč.
                         </p>
                     <?php else: ?>
-                        <table class="bt-table">
-                            <thead>
-                                <tr>
-                                    <th>Ime igrišča</th>
-                                    <th class="text-center">Vrstni red</th>
-                                    <th class="w-32 text-right">Akcije</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($tournament->courts as $court): ?>
+                        <div class="bt-table-wrapper">
+                            <table class="bt-table">
+                                <thead>
                                     <tr>
-                                        <td><?= h($court->name) ?></td>
-                                        <td class="text-center text-xs">
-                                            <?= (int)$court->sort_order ?>
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="flex justify-end gap-1">                                                
-                                                <?= $this->Html->link('Uredi', ['controller' => 'Courts', 'action' => 'edit', $court->id], [
-                                                    'class' => 'bt-button-secondary text-[11px]',
-                                                ]) ?>
-                                                <?= $this->Form->postLink('Izbriši', ['controller' => 'Courts', 'action' => 'delete', $court->id], [
-                                                    'confirm' => 'Res želiš izbrisati to igrišče?',
-                                                    'class' => 'bt-button-secondary text-[11px] text-rose-700 border-rose-300 hover:bg-rose-50',
-                                                ]) ?>
-                                            </div>
-                                        </td>
+                                        <th>Ime igrišča</th>
+                                        <th class="text-center">Vrstni red</th>
+                                        <th class="w-32 text-right">Akcije</th>
                                     </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($tournament->courts as $court): ?>
+                                        <tr>
+                                            <td><?= h($court->name) ?></td>
+                                            <td class="text-center text-xs">
+                                                <?= (int)$court->sort_order ?>
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="flex justify-end gap-1">
+                                                    <?= $this->Html->link('Uredi', ['controller' => 'Courts', 'action' => 'edit', $court->id], [
+                                                        'class' => 'bt-button-secondary text-[11px]',
+                                                    ]) ?>
+                                                    <?= $this->Form->postLink('Izbriši', ['controller' => 'Courts', 'action' => 'delete', $court->id], [
+                                                        'confirm' => 'Res želiš izbrisati to igrišče?',
+                                                        'class' => 'bt-button-secondary text-[11px] text-rose-700 border-rose-300 hover:bg-rose-50',
+                                                    ]) ?>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>

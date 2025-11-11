@@ -33,86 +33,88 @@ $this->assign('title', 'Turnirji');
         </div>
 
         <div class="px-3 py-3 overflow-x-auto">
-            <table class="bt-table">
-                <thead>
-                    <tr>
-                        <th><?= $this->Paginator->sort('id', 'ID') ?></th>
-                        <th><?= $this->Paginator->sort('name', 'Ime turnirja') ?></th>
-                        <th><?= $this->Paginator->sort('location', 'Lokacija') ?></th>
-                        <th class="text-center"><?= $this->Paginator->sort('starts_on', 'Datum') ?></th>
-                        <th class="text-center"><?= $this->Paginator->sort('status', 'Status') ?></th>
-                        <th class="w-32 text-right">Akcije</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if ($tournaments->isEmpty()): ?>
+            <div class="bt-table-wrapper">
+                <table class="bt-table">
+                    <thead>
                         <tr>
-                            <td colspan="6" class="text-center text-xs text-slate-400 py-4">
-                                Trenutno ni vnešenih turnirjev.
-                            </td>
+                            <th><?= $this->Paginator->sort('id', 'ID') ?></th>
+                            <th><?= $this->Paginator->sort('name', 'Ime turnirja') ?></th>
+                            <th><?= $this->Paginator->sort('location', 'Lokacija') ?></th>
+                            <th class="text-center"><?= $this->Paginator->sort('starts_on', 'Datum') ?></th>
+                            <th class="text-center"><?= $this->Paginator->sort('status', 'Status') ?></th>
+                            <th class="w-32 text-right">Akcije</th>
                         </tr>
-                    <?php else: ?>
-                        <?php foreach ($tournaments as $tournament): ?>
+                    </thead>
+                    <tbody>
+                        <?php if ($tournaments->isEmpty()): ?>
                             <tr>
-                                <td><?= $this->Number->format($tournament->id) ?></td>
-                                <td>
-                                    <?= $this->Html->link(
-                                        h($tournament->name),
-                                        ['action' => 'view', $tournament->id],
-                                        ['class' => 'text-sm text-primary-600 hover:underline']
-                                    ) ?>
-                                </td>
-                                <td><?= h($tournament->location ?? '–') ?></td>
-                                <td class="text-center text-xs">
-                                    <?php if ($tournament->starts_on || $tournament->ends_on): ?>
-                                        <?= $tournament->starts_on ? $tournament->starts_on->format('d.m.Y') : '–' ?>
-                                        –
-                                        <?= $tournament->ends_on ? $tournament->ends_on->format('d.m.Y') : '–' ?>
-                                    <?php else: ?>
-                                        <span class="text-slate-400">–</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td class="text-center">
-                                    <?php
-                                    $status = $tournament->status ?? 'draft';
-                                    $label = $status;
-                                    $cls = 'text-xs rounded-full px-2 py-0.5 ';
-                                    switch ($status) {
-                                        case 'active':
-                                            $label = 'aktiven';
-                                            $cls .= 'bg-emerald-50 text-emerald-700';
-                                            break;
-                                        case 'finished':
-                                            $label = 'zaključen';
-                                            $cls .= 'bg-slate-200 text-slate-700';
-                                            break;
-                                        default:
-                                            $label = 'osnutek';
-                                            $cls .= 'bg-slate-100 text-slate-600';
-                                            break;
-                                    }
-                                    ?>
-                                    <span class="<?= $cls ?>"><?= h($label) ?></span>
-                                </td>
-                                <td class="text-right">
-                                    <div class="flex justify-end gap-1">
-                                        <?= $this->Html->link('Pogled', ['action' => 'view', $tournament->id], [
-                                            'class' => 'bt-button-secondary text-[11px]',
-                                        ]) ?>
-                                        <?= $this->Html->link('Uredi', ['action' => 'edit', $tournament->id], [
-                                            'class' => 'bt-button-secondary text-[11px]',
-                                        ]) ?>
-                                        <?= $this->Form->postLink('Izbriši', ['action' => 'delete', $tournament->id], [
-                                            'confirm' => 'Res želiš izbrisati ta turnir?',
-                                            'class' => 'bt-button-secondary text-[11px] text-rose-700 border-rose-300 hover:bg-rose-50',
-                                        ]) ?>
-                                    </div>
+                                <td colspan="6" class="text-center text-xs text-slate-400 py-4">
+                                    Trenutno ni vnešenih turnirjev.
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </tbody>
-            </table>
+                        <?php else: ?>
+                            <?php foreach ($tournaments as $tournament): ?>
+                                <tr>
+                                    <td><?= $this->Number->format($tournament->id) ?></td>
+                                    <td>
+                                        <?= $this->Html->link(
+                                            h($tournament->name),
+                                            ['action' => 'view', $tournament->id],
+                                            ['class' => 'text-sm text-primary-600 hover:underline']
+                                        ) ?>
+                                    </td>
+                                    <td><?= h($tournament->location ?? '–') ?></td>
+                                    <td class="text-center text-xs">
+                                        <?php if ($tournament->starts_on || $tournament->ends_on): ?>
+                                            <?= $tournament->starts_on ? $tournament->starts_on->format('d.m.Y') : '–' ?>
+                                            –
+                                            <?= $tournament->ends_on ? $tournament->ends_on->format('d.m.Y') : '–' ?>
+                                        <?php else: ?>
+                                            <span class="text-slate-400">–</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="text-center">
+                                        <?php
+                                        $status = $tournament->status ?? 'draft';
+                                        $label = $status;
+                                        $cls = 'text-xs rounded-full px-2 py-0.5 ';
+                                        switch ($status) {
+                                            case 'active':
+                                                $label = 'aktiven';
+                                                $cls .= 'bg-emerald-50 text-emerald-700';
+                                                break;
+                                            case 'finished':
+                                                $label = 'zaključen';
+                                                $cls .= 'bg-slate-200 text-slate-700';
+                                                break;
+                                            default:
+                                                $label = 'osnutek';
+                                                $cls .= 'bg-slate-100 text-slate-600';
+                                                break;
+                                        }
+                                        ?>
+                                        <span class="<?= $cls ?>"><?= h($label) ?></span>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="flex justify-end gap-1">
+                                            <?= $this->Html->link('Pogled', ['action' => 'view', $tournament->id], [
+                                                'class' => 'bt-button-secondary text-[11px]',
+                                            ]) ?>
+                                            <?= $this->Html->link('Uredi', ['action' => 'edit', $tournament->id], [
+                                                'class' => 'bt-button-secondary text-[11px]',
+                                            ]) ?>
+                                            <?= $this->Form->postLink('Izbriši', ['action' => 'delete', $tournament->id], [
+                                                'confirm' => 'Res želiš izbrisati ta turnir?',
+                                                'class' => 'bt-button-secondary text-[11px] text-rose-700 border-rose-300 hover:bg-rose-50',
+                                            ]) ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <?php if ($this->Paginator->total() > 1): ?>

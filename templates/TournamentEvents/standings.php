@@ -33,8 +33,8 @@ $this->assign('title', 'Lestvica – ' . $event->name);
                     Za ta dogodek še ni vnesenih tekmovalcev.
                 </p>
             <?php else: ?>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full text-sm bt-table">
+                <div class="bt-table-wrapper">
+                    <table class="bt-table">
                         <thead>
                             <tr>
                                 <th class="text-left px-2 py-2 w-16">Mesto</th>

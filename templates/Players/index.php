@@ -32,7 +32,7 @@ $this->assign('title', 'Igralci');
             </div>
         </div>
 
-        <div class="px-3 py-3 overflow-x-auto">
+        <div class="px-3 py-3 overflow-x-auto">            
             <table class="bt-table">
                 <thead>
                     <tr>

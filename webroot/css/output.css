@@ -43,6 +43,8 @@
     --color-slate-700: oklch(37.2% 0.044 257.287);
     --color-slate-800: oklch(27.9% 0.041 260.031);
     --color-slate-900: oklch(20.8% 0.042 265.755);
+    --color-gray-200: oklch(92.8% 0.006 264.531);
+    --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-6xl: 72rem;
@@ -338,6 +340,12 @@
   .w-8 {
     width: calc(var(--spacing) * 8);
   }
+  .w-16 {
+    width: calc(var(--spacing) * 16);
+  }
+  .w-24 {
+    width: calc(var(--spacing) * 24);
+  }
   .w-28 {
     width: calc(var(--spacing) * 28);
   }
@@ -364,6 +372,9 @@
   }
   .min-w-\[4\.5rem\] {
     min-width: 4.5rem;
+  }
+  .min-w-full {
+    min-width: 100%;
   }
   .flex-1 {
     flex: 1;
@@ -482,6 +493,9 @@
   .border-border-soft {
     border-color: var(--color-border-soft);
   }
+  .border-gray-200 {
+    border-color: var(--color-gray-200);
+  }
   .border-rose-300 {
     border-color: var(--color-rose-300);
   }
@@ -584,6 +598,9 @@
   .text-center {
     text-align: center;
   }
+  .text-left {
+    text-align: left;
+  }
   .text-right {
     text-align: right;
   }
@@ -649,6 +666,9 @@
   }
   .text-emerald-700 {
     color: var(--color-emerald-700);
+  }
+  .text-gray-500 {
+    color: var(--color-gray-500);
   }
   .text-primary-600 {
     color: var(--color-primary-600);
@@ -776,6 +796,11 @@
       padding-block: calc(var(--spacing) * 6);
     }
   }
+  .md\:col-span-2 {
+    @media (width >= 48rem) {
+      grid-column: span 2 / span 2;
+    }
+  }
   .md\:flex {
     @media (width >= 48rem) {
       display: flex;
@@ -794,6 +819,11 @@
   .md\:grid-cols-3 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-4 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
   .lg\:col-span-1 {
@@ -825,7 +855,6 @@
     padding-block: calc(var(--spacing) * 6);
   }
   .bt-card {
-    overflow: hidden;
     border-radius: var(--radius-2xl);
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -1170,6 +1199,15 @@
     background-color: var(--color-white);
     padding-inline: calc(var(--spacing) * 3);
     padding-block: calc(var(--spacing) * 2);
+  }
+  .bt-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+  @media (max-width: 768px) {
+    .bt-table {
+      min-width: 520px;
+    }
   }
 }
 @property --tw-space-y-reverse {
