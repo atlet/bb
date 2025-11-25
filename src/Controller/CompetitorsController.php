@@ -50,7 +50,7 @@ class CompetitorsController extends AppController {
 
                 return $this->redirect("/tournament-events/view/{$tournament_event_id}");
             }
-            $this->Flash->error(__('The competitor could not be saved. Please, try again.'));
+            $this->Flash->error(__('Igralca ni bilo mogoče shraniti. Prosim poskusite ponovno.'));
         }
         
         $this->set(compact('competitor', 'tournament_event_id'));
@@ -69,11 +69,11 @@ class CompetitorsController extends AppController {
         if ($this->request->is(['patch', 'post', 'put'])) {
             $competitor = $this->Competitors->patchEntity($competitor, $this->request->getData());
             if ($this->Competitors->save($competitor)) {
-                $this->Flash->success(__('The competitor has been saved.'));
+                $this->Flash->success(__('Igralec je bil shranjen.'));
 
                 return $this->redirect("/tournament-events/view/{$tournament_event_id}");
             }
-            $this->Flash->error(__('The competitor could not be saved. Please, try again.'));
+            $this->Flash->error(__('Igralca ni bilo mogoče shraniti. Prosim poskusite ponovno.'));
         }
         
         $this->set(compact('competitor', 'tournament_event_id'));
@@ -91,9 +91,9 @@ class CompetitorsController extends AppController {
         $competitor = $this->Competitors->get($id);
         $tournament_event_id = $competitor->tournament_event_id;
         if ($this->Competitors->delete($competitor)) {
-            $this->Flash->success(__('The competitor has been deleted.'));
+            $this->Flash->success(__('Igralec je bil izbrisan.'));
         } else {
-            $this->Flash->error(__('The competitor could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Igralca ni bilo mogoče izbrisati. Prosim poskusi ponovno.'));
         }
 
         return $this->redirect("/tournament-events/view/{$tournament_event_id}");
