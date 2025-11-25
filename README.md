@@ -63,7 +63,7 @@ Tipične tabele (poimenovanje se sklada z CakePHP konvencijo):
 
 ## 🚀 Namestitev (osnovni koraki)
 
-Namesti docker in docker composer.
+Namesti docker in docker composer. [Navodila](https://docs.docker.com/compose/install).
 
 ```bash
 git clone https://github.com/USERNAME/badminton-tournament.git
