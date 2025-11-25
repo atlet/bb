@@ -4,19 +4,19 @@
  * @var \App\View\AppView $this
  * @var \Cake\Datasource\ResultSetInterface|\App\Model\Entity\Player[] $players
  */
-$this->assign('title', 'Igralci');
+$this->assign('title', __('Igralci'));
 ?>
 
 <div class="bt-page">
     <div class="bt-header">
         <div>
-            <h1 class="bt-header-title">Igralci</h1>
+            <h1 class="bt-header-title"><?= __('Igralci') ?></h1>
             <p class="bt-header-subtitle">
-                Seznam vseh registriranih igralcev
+                <?= __('Seznam vseh registriranih igralcev') ?>
             </p>
         </div>
         <div class="bt-actions">
-            <?= $this->Html->link('Dodaj igralca', ['action' => 'add'], [
+            <?= $this->Html->link(__('Dodaj igralca'), ['action' => 'add'], [
                 'class' => 'bt-button',
             ]) ?>
         </div>
@@ -25,7 +25,7 @@ $this->assign('title', 'Igralci');
     <div class="bt-card">
         <div class="px-3 py-2 border-b border-border-soft bg-slate-50 flex justify-between items-center">
             <div class="text-xs font-semibold uppercase text-slate-500">
-                Seznam igralcev
+                <?= __('Seznam igralcev') ?>
             </div>
             <div class="text-[11px] text-slate-400">
                 <?= $this->Paginator->counter('{{count}} zapisov') ?>
@@ -36,19 +36,19 @@ $this->assign('title', 'Igralci');
             <table class="bt-table">
                 <thead>
                     <tr>
-                        <th><?= $this->Paginator->sort('id', 'ID') ?></th>
-                        <th><?= $this->Paginator->sort('last_name', 'Priimek') ?></th>
-                        <th><?= $this->Paginator->sort('first_name', 'Ime') ?></th>
-                        <th class="text-center"><?= $this->Paginator->sort('gender', 'Spol') ?></th>
-                        <th class="text-center"><?= $this->Paginator->sort('rating', 'Rating') ?></th>
-                        <th class="w-32 text-right">Akcije</th>
+                        <th><?= $this->Paginator->sort('id', __('ID')) ?></th>
+                        <th><?= $this->Paginator->sort('last_name', __('Priimek')) ?></th>
+                        <th><?= $this->Paginator->sort('first_name', __('Ime')) ?></th>
+                        <th class="text-center"><?= $this->Paginator->sort('gender', __('Spol')) ?></th>
+                        <th class="text-center"><?= $this->Paginator->sort('rating', __('Rating')) ?></th>
+                        <th class="w-32 text-right"><?= __('Akcije') ?></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if ($players->isEmpty()): ?>
                         <tr>
                             <td colspan="6" class="text-center text-xs text-slate-400 py-4">
-                                Trenutno ni vnešenih igralcev.
+                                <?= __('Trenutno ni vnešenih igralcev.') ?>
                             </td>
                         </tr>
                     <?php else: ?>
@@ -59,9 +59,9 @@ $this->assign('title', 'Igralci');
                                 <td><?= h($player->first_name) ?></td>
                                 <td class="text-center">
                                     <?php if ($player->gender === 'M'): ?>
-                                        <span class="text-xs text-slate-700">M</span>
+                                        <span class="text-xs text-slate-700"><?= __('M') ?></span>
                                     <?php elseif ($player->gender === 'F'): ?>
-                                        <span class="text-xs text-slate-700">Ž</span>
+                                        <span class="text-xs text-slate-700"><?= __('Ž') ?></span>
                                     <?php else: ?>
                                         <span class="text-xs text-slate-400">–</span>
                                     <?php endif; ?>
@@ -100,15 +100,15 @@ $this->assign('title', 'Igralci');
             <div class="bt-pagination">
                 <div class="bt-pagination-info">
                     <?= $this->Paginator->counter([
-                        'format' => 'Stran {{page}} od {{pages}} · skupaj {{count}} zapisov'
+                        'format' => __('Stran {{page}} od {{pages}} · skupaj {{count}} zapisov')
                     ]) ?>
                 </div>
                 <div class="bt-pagination-links">
-                    <?= $this->Paginator->first('« Prva') ?>
-                    <?= $this->Paginator->prev('‹ Nazaj') ?>
+                    <?= $this->Paginator->first(__('« Prva')) ?>
+                    <?= $this->Paginator->prev(__('‹ Nazaj')) ?>
                     <?= $this->Paginator->numbers() ?>
-                    <?= $this->Paginator->next('Naprej ›') ?>
-                    <?= $this->Paginator->last('Zadnja »') ?>
+                    <?= $this->Paginator->next(__('Naprej ›')) ?>
+                    <?= $this->Paginator->last(__('Zadnja »')) ?>
                 </div>
             </div>
         <?php endif; ?>

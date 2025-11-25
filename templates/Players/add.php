@@ -4,13 +4,13 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Player $player
  */
-$this->assign('title', 'Dodaj igralca');
+$this->assign('title', __('Dodaj igralca'));
 ?>
 
 <div class="bt-page">
     <div class="bt-header">
         <div>
-            <h1 class="bt-header-title">Dodaj igralca</h1>
+            <h1 class="bt-header-title"><?= __('Dodaj igralca') ?></h1>
             <p class="bt-header-subtitle">
                 Vnos novega igralca v bazo
             </p>

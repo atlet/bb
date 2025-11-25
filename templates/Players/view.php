@@ -4,28 +4,28 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Player $player
  */
-$this->assign('title', 'Igralec – ' . $player->first_name . ' ' . $player->last_name);
+$this->assign('title', __('Igralec') . ' – ' . $player->first_name . ' ' . $player->last_name);
 ?>
 
 <div class="bt-page">
     <div class="bt-header">
         <div>
             <h1 class="bt-header-title">
-                Igralec: <?= h($player->first_name . ' ' . $player->last_name) ?>
+                <?= __('Igralec') ?>: <?= h($player->first_name . ' ' . $player->last_name) ?>
             </h1>
             <p class="bt-header-subtitle">
-                ID: <?= $this->Number->format($player->id) ?>
+                <?= __('ID') ?>: <?= $this->Number->format($player->id) ?>
             </p>
         </div>
         <div class="bt-actions">
-            <?= $this->Html->link('Nazaj na seznam', ['action' => 'index'], [
+            <?= $this->Html->link(__('Nazaj na seznam'), ['action' => 'index'], [
                 'class' => 'bt-button-secondary',
             ]) ?>
-            <?= $this->Html->link('Uredi', ['action' => 'edit', $player->id], [
+            <?= $this->Html->link(__('Uredi'), ['action' => 'edit', $player->id], [
                 'class' => 'bt-button',
             ]) ?>
-            <?= $this->Form->postLink('Izbriši', ['action' => 'delete', $player->id], [
-                'confirm' => 'Res želiš izbrisati tega igralca?',
+            <?= $this->Form->postLink(__('Izbriši'), ['action' => 'delete', $player->id], [
+                'confirm' => __('Res želiš izbrisati tega igralca?'),
                 'class' => 'bt-button-secondary text-rose-700 border-rose-300 hover:bg-rose-50',
             ]) ?>
         </div>
@@ -37,31 +37,31 @@ $this->assign('title', 'Igralec – ' . $player->first_name . ' ' . $player->las
             <div class="bt-card">
                 <div class="px-4 py-3 border-b border-border-soft bg-slate-50">
                     <div class="text-xs font-semibold uppercase text-slate-500">
-                        Osnovni podatki
+                        <?= __('Osnovni podatki') ?>
                     </div>
                 </div>
                 <div class="px-4 py-4 text-sm space-y-3">
                     <div>
-                        <div class="text-xs text-slate-500 mb-0.5">Ime</div>
+                        <div class="text-xs text-slate-500 mb-0.5"><?= __('Ime') ?></div>
                         <div class="font-medium text-slate-800">
                             <?= h($player->first_name) ?>
                         </div>
                     </div>
 
                     <div>
-                        <div class="text-xs text-slate-500 mb-0.5">Priimek</div>
+                        <div class="text-xs text-slate-500 mb-0.5"><?= __('Priimek') ?></div>
                         <div class="font-medium text-slate-800">
                             <?= h($player->last_name) ?>
                         </div>
                     </div>
 
                     <div class="flex justify-between items-center">
-                        <span class="text-xs text-slate-500">Spol</span>
+                        <span class="text-xs text-slate-500"><?= __('Spol') ?></span>
                         <span class="text-xs text-slate-800">
                             <?php if ($player->gender === 'M'): ?>
-                                Moški
+                                <?= __('Moški') ?>
                             <?php elseif ($player->gender === 'F'): ?>
-                                Ženska
+                                <?= __('Ženska') ?>
                             <?php else: ?>
                                 –
                             <?php endif; ?>
@@ -69,15 +69,15 @@ $this->assign('title', 'Igralec – ' . $player->first_name . ' ' . $player->las
                     </div>
 
                     <div class="flex justify-between items-center">
-                        <span class="text-xs text-slate-500">Rating</span>
+                        <span class="text-xs text-slate-500"><?= __('Rating') ?></span>
                         <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-50 text-primary-600 text-xs font-semibold">
                             <?= $player->rating !== null ? $this->Number->format($player->rating, ['places' => 1]) : '–' ?>
                         </span>
                     </div>
 
                     <div class="border-t border-dashed border-border-soft pt-3 mt-2 text-[11px] text-slate-400">
-                        Ustvarjen: <?= $player->created ? $player->created->format('d.m.Y H:i') : '–' ?><br>
-                        Spremenjen: <?= $player->modified ? $player->modified->format('d.m.Y H:i') : '–' ?>
+                        <?= __('Ustvarjen') ?>: <?= $player->created ? $player->created->format('d.m.Y H:i') : '–' ?><br>
+                        <?= __('Spremenjen') ?>: <?= $player->modified ? $player->modified->format('d.m.Y H:i') : '–' ?>
                     </div>
                 </div>
             </div>
@@ -88,22 +88,22 @@ $this->assign('title', 'Igralec – ' . $player->first_name . ' ' . $player->las
             <div class="bt-card">
                 <div class="px-4 py-3 border-b border-border-soft bg-slate-50 flex justify-between items-center">
                     <div class="text-xs font-semibold uppercase text-slate-500">
-                        Ekipe / pari, kjer nastopa
+                        <?= __('Ekipe / pari, kjer nastopa') ?>
                     </div>
                 </div>
                 <div class="px-4 py-3">
                     <?php if (empty($player->competitor_players)): ?>
                         <p class="text-xs text-slate-400">
-                            Ta igralec trenutno ni dodeljen nobenemu paru / ekipi.
+                            <?= __('Ta igralec trenutno ni dodeljen nobenemu paru / ekipi.') ?>
                         </p>
                     <?php else: ?>
                         <div class="bt-table-wrapper">
                             <table class="bt-table">
                                 <thead>
                                     <tr>
-                                        <th>Par / ekipa</th>
-                                        <th>Pozicija</th>
-                                        <th>Dogodek</th>
+                                        <th><?= __('Par / ekipa') ?></th>
+                                        <th><?= __('Pozicija') ?></th>
+                                        <th><?= __('Dogodek') ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
