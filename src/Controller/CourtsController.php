@@ -69,7 +69,7 @@ class CourtsController extends AppController {
         if ($this->request->is(['patch', 'post', 'put'])) {
             $court = $this->Courts->patchEntity($court, $this->request->getData());
             if ($this->Courts->save($court)) {
-                $this->Flash->success(__('The court has been saved.'));
+                $this->Flash->success(__('Zapis je bil uspešno shranjen.'));
 
                 return $this->redirect(['controller' => 'Tournaments', 'action' => 'view', $court->tournament_id]);
             }
@@ -91,9 +91,9 @@ class CourtsController extends AppController {
         $court = $this->Courts->get($id);
         $tournament_id = $court->tournament_id;
         if ($this->Courts->delete($court)) {
-            $this->Flash->success(__('The court has been deleted.'));
+            $this->Flash->success(__('Zapis je bil uspešno izbrisan.'));
         } else {
-            $this->Flash->error(__('The court could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Napaka pri izbrisu. Prosim, odpravite napake.'));
         }
 
         return $this->redirect(['controller' => 'Tournaments', 'action' => 'view', $court->tournament_id]);
