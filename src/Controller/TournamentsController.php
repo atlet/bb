@@ -44,11 +44,11 @@ class TournamentsController extends AppController {
         if ($this->request->is('post')) {
             $tournament = $this->Tournaments->patchEntity($tournament, $this->request->getData());
             if ($this->Tournaments->save($tournament)) {
-                $this->Flash->success(__('The tournament has been saved.'));
+                $this->Flash->success(__('Zapis je bil uspešno shranjen.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The tournament could not be saved. Please, try again.'));
+            $this->Flash->error(__('Napaka pri shranjevanju. Prosim, odpravite napake.'));
         }
         $this->set(compact('tournament'));
     }
@@ -65,11 +65,11 @@ class TournamentsController extends AppController {
         if ($this->request->is(['patch', 'post', 'put'])) {
             $tournament = $this->Tournaments->patchEntity($tournament, $this->request->getData());
             if ($this->Tournaments->save($tournament)) {
-                $this->Flash->success(__('The tournament has been saved.'));
+                $this->Flash->success(__('Zapis je bil uspešno shranjen.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The tournament could not be saved. Please, try again.'));
+            $this->Flash->error(__('Napaka pri shranjevanju. Prosim, odpravite napake.'));
         }
         $this->set(compact('tournament'));
     }
@@ -85,9 +85,9 @@ class TournamentsController extends AppController {
         $this->request->allowMethod(['post', 'delete']);
         $tournament = $this->Tournaments->get($id);
         if ($this->Tournaments->delete($tournament)) {
-            $this->Flash->success(__('The tournament has been deleted.'));
+            $this->Flash->success(__('Zapis je bil uspešno izbrisan.'));
         } else {
-            $this->Flash->error(__('The tournament could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Napaka pri izbrisu. Prosim, odpravite napake.'));
         }
 
         return $this->redirect(['action' => 'index']);

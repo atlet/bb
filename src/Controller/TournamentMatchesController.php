@@ -49,12 +49,12 @@ class TournamentMatchesController extends AppController {
             $tournamentMatch = $this->TournamentMatches->patchEntity($tournamentMatch, $this->request->getData());
             $tournamentMatch->tournament_event_id = $tournament_event_id;
             if ($this->TournamentMatches->save($tournamentMatch)) {
-                $this->Flash->success(__('The tournament match has been saved.'));
+                $this->Flash->success(__('Zapis je bil uspešno shranjen.'));
                 $this->TournamentMatches->recalculateStatsForEvent($tournament_event_id);
 
                 return $this->redirect(['action' => 'view', $tournamentMatch->id]);
             }
-            $this->Flash->error(__('The tournament match could not be saved. Please, try again.'));
+            $this->Flash->error(__('Napaka pri shranjevanju. Prosim, odpravite napake.'));
         }
         
         $competitors = $this->TournamentMatches->Competitor1s->getCompetitorsForEvent($tournament_event_id);        
@@ -75,12 +75,12 @@ class TournamentMatchesController extends AppController {
         if ($this->request->is(['patch', 'post', 'put'])) {
             $tournamentMatch = $this->TournamentMatches->patchEntity($tournamentMatch, $this->request->getData());
             if ($this->TournamentMatches->save($tournamentMatch)) {
-                $this->Flash->success(__('The tournament match has been saved.'));
+                $this->Flash->success(__('Zapis je bil uspešno shranjen.'));
                 $this->TournamentMatches->recalculateStatsForEvent($tournament_event_id);
 
                 return $this->redirect(['action' => 'view', $tournamentMatch->id]);
             }
-            $this->Flash->error(__('The tournament match could not be saved. Please, try again.'));
+            $this->Flash->error(__('Napaka pri shranjevanju. Prosim, odpravite napake.'));
         }
         
         $competitors = $this->TournamentMatches->Competitor1s->getCompetitorsForEvent($tournament_event_id);        
@@ -100,9 +100,9 @@ class TournamentMatchesController extends AppController {
         $tournamentMatch = $this->TournamentMatches->get($id);
         $tournament_event_id = $tournamentMatch->tournament_event_id;
         if ($this->TournamentMatches->delete($tournamentMatch)) {
-            $this->Flash->success(__('The tournament match has been deleted.'));
+            $this->Flash->success(__('Zapis je bil uspešno izbrisan.'));
         } else {
-            $this->Flash->error(__('The tournament match could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Napaka pri izbrisu. Prosim, odpravite napake.'));
         }
 
         return $this->redirect(['controller' => 'TournamentEvents', 'action' => 'view', $tournament_event_id]);
