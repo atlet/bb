@@ -80,5 +80,5 @@ bin/cake server
 "" 
 ```
 ## Avtorji
-- Andraž Prinčič
-- Rok Meglič
+- Andraž Prinčič (vodja razvoja)
+- Rok Meglič (pomočnik)
