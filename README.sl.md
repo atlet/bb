@@ -73,6 +73,20 @@ cp config/app_local.example.php config/app_local.php
 # v config/app_local.php nastavi povezavo na bazo
 ```
 
+Nastavitve baze - na mesto pod 'default' v config/app_local.php dodaj.
+```bash
+'default' => [
+            'className' => \Cake\Database\Connection::class,
+            'driver' => \Cake\Database\Driver\Sqlite::class,
+            'database' => ROOT . DS . 'db' . DS . 'tournament.sqlite',
+            'encoding' => 'utf8',
+            'persistent' => false,
+            'timezone' => 'UTC',
+            'cacheMetadata' => true,
+            'log' => true,
+        ],
+```
+
 Poženemo docker z ukazom
 
 ```bash
@@ -88,20 +102,6 @@ composer install
 
 bin/cake migrations migrate
 bin/cake migrations seed
-```
-
-Nastavitve baze - dodaj v config/app_local.php.
-```bash
-'default' => [
-            'className' => \Cake\Database\Connection::class,
-            'driver' => \Cake\Database\Driver\Sqlite::class,
-            'database' => ROOT . DS . 'db' . DS . 'tournament.sqlite',
-            'encoding' => 'utf8',
-            'persistent' => false,
-            'timezone' => 'UTC',
-            'cacheMetadata' => true,
-            'log' => true,
-        ],
 ```
 
 ## Avtorji
