@@ -73,7 +73,7 @@ class CourtsController extends AppController {
 
                 return $this->redirect(['controller' => 'Tournaments', 'action' => 'view', $court->tournament_id]);
             }
-            $this->Flash->error(__('The court could not be saved. Please, try again.'));
+            $this->Flash->error(__('Napaka pri shranjevanju. Prosim, odpravite napake.'));
         }
 
         $this->set(compact('court', 'tournament_id'));
