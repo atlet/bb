@@ -1,0 +1,356 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-11-25 19:43+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: ./src/Controller/CompetitorPlayersController.php:94
+msgid "The competitor player has been saved."
+msgstr ""
+
+#: ./src/Controller/CompetitorPlayersController.php:98
+msgid "The competitor player could not be saved. Please, try again."
+msgstr ""
+
+#: ./src/Controller/CompetitorPlayersController.php:116
+msgid "The competitor player has been deleted."
+msgstr ""
+
+#: ./src/Controller/CompetitorPlayersController.php:118
+msgid "The competitor player could not be deleted. Please, try again."
+msgstr ""
+
+#: ./src/Controller/CompetitorsController.php:49
+#: ./src/Controller/CompetitorsController.php:72
+msgid "The competitor has been saved."
+msgstr ""
+
+#: ./src/Controller/CompetitorsController.php:53
+#: ./src/Controller/CompetitorsController.php:76
+msgid "The competitor could not be saved. Please, try again."
+msgstr ""
+
+#: ./src/Controller/CompetitorsController.php:94
+msgid "The competitor has been deleted."
+msgstr ""
+
+#: ./src/Controller/CompetitorsController.php:96
+msgid "The competitor could not be deleted. Please, try again."
+msgstr ""
+
+#: ./src/Controller/CourtsController.php:49
+msgid "Zapis je bil uspešno shranjen."
+msgstr ""
+
+#: ./src/Controller/CourtsController.php:53
+msgid "Napaka pri shranjevanju. Prosim, odpravite napake."
+msgstr ""
+
+#: ./src/Controller/CourtsController.php:72
+msgid "The court has been saved."
+msgstr ""
+
+#: ./src/Controller/CourtsController.php:76
+msgid "The court could not be saved. Please, try again."
+msgstr ""
+
+#: ./src/Controller/CourtsController.php:94
+msgid "The court has been deleted."
+msgstr ""
+
+#: ./src/Controller/CourtsController.php:96
+msgid "The court could not be deleted. Please, try again."
+msgstr ""
+
+#: ./src/Controller/MatchGamesController.php:51
+#: ./src/Controller/MatchGamesController.php:74
+msgid "The match game has been saved."
+msgstr ""
+
+#: ./src/Controller/MatchGamesController.php:55
+#: ./src/Controller/MatchGamesController.php:78
+msgid "The match game could not be saved. Please, try again."
+msgstr ""
+
+#: ./src/Controller/MatchGamesController.php:96
+msgid "The match game has been deleted."
+msgstr ""
+
+#: ./src/Controller/MatchGamesController.php:98
+msgid "The match game could not be deleted. Please, try again."
+msgstr ""
+
+#: ./src/Controller/PlayersController.php:47
+#: ./src/Controller/PlayersController.php:68
+msgid "The player has been saved."
+msgstr ""
+
+#: ./src/Controller/PlayersController.php:51
+#: ./src/Controller/PlayersController.php:72
+msgid "The player could not be saved. Please, try again."
+msgstr ""
+
+#: ./src/Controller/PlayersController.php:88
+msgid "The player has been deleted."
+msgstr ""
+
+#: ./src/Controller/PlayersController.php:90
+msgid "The player could not be deleted. Please, try again."
+msgstr ""
+
+#: ./src/Controller/TournamentEventsController.php:52
+#: ./src/Controller/TournamentEventsController.php:75
+msgid "The tournament event has been saved."
+msgstr ""
+
+#: ./src/Controller/TournamentEventsController.php:56
+#: ./src/Controller/TournamentEventsController.php:79
+msgid "The tournament event could not be saved. Please, try again."
+msgstr ""
+
+#: ./src/Controller/TournamentEventsController.php:97
+msgid "The tournament event has been deleted."
+msgstr ""
+
+#: ./src/Controller/TournamentEventsController.php:99
+msgid "The tournament event could not be deleted. Please, try again."
+msgstr ""
+
+#: ./src/Controller/TournamentMatchesController.php:52
+#: ./src/Controller/TournamentMatchesController.php:78
+msgid "The tournament match has been saved."
+msgstr ""
+
+#: ./src/Controller/TournamentMatchesController.php:57
+#: ./src/Controller/TournamentMatchesController.php:83
+msgid "The tournament match could not be saved. Please, try again."
+msgstr ""
+
+#: ./src/Controller/TournamentMatchesController.php:103
+msgid "The tournament match has been deleted."
+msgstr ""
+
+#: ./src/Controller/TournamentMatchesController.php:105
+msgid "The tournament match could not be deleted. Please, try again."
+msgstr ""
+
+#: ./src/Controller/TournamentsController.php:47
+#: ./src/Controller/TournamentsController.php:68
+msgid "The tournament has been saved."
+msgstr ""
+
+#: ./src/Controller/TournamentsController.php:51
+#: ./src/Controller/TournamentsController.php:72
+msgid "The tournament could not be saved. Please, try again."
+msgstr ""
+
+#: ./src/Controller/TournamentsController.php:88
+msgid "The tournament has been deleted."
+msgstr ""
+
+#: ./src/Controller/TournamentsController.php:90
+msgid "The tournament could not be deleted. Please, try again."
+msgstr ""
+
+#: ./templates/CompetitorPlayers/edit.php:12
+#: ./templates/CompetitorPlayers/index.php:20
+#: ./templates/CompetitorPlayers/view.php:10
+#: ./templates/MatchGames/add.php:11
+#: ./templates/MatchGames/edit.php:11
+#: ./templates/MatchGames/index.php:21
+#: ./templates/MatchGames/view.php:10
+msgid "Actions"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/edit.php:14
+#: ./templates/CompetitorPlayers/index.php:36
+#: ./templates/MatchGames/edit.php:13
+#: ./templates/MatchGames/index.php:38
+msgid "Delete"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/edit.php:16
+#: ./templates/CompetitorPlayers/index.php:40
+#: ./templates/CompetitorPlayers/view.php:12
+#: ./templates/MatchGames/edit.php:15
+#: ./templates/MatchGames/index.php:42
+#: ./templates/MatchGames/view.php:12
+msgid "Are you sure you want to delete # {0}?"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/edit.php:18
+#: ./templates/CompetitorPlayers/view.php:13
+msgid "List Competitor Players"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/edit.php:25
+#: ./templates/CompetitorPlayers/view.php:11
+msgid "Edit Competitor Player"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/edit.php:32
+#: ./templates/MatchGames/add.php:27
+#: ./templates/MatchGames/edit.php:32
+msgid "Submit"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/index.php:8
+#: ./templates/CompetitorPlayers/view.php:14
+msgid "New Competitor Player"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/index.php:9
+msgid "Competitor Players"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/index.php:33
+#: ./templates/MatchGames/index.php:35
+msgid "View"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/index.php:34
+#: ./templates/MatchGames/index.php:36
+msgid "Edit"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/index.php:51
+#: ./templates/MatchGames/index.php:53
+msgid "first"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/index.php:52
+#: ./templates/MatchGames/index.php:54
+msgid "previous"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/index.php:54
+#: ./templates/MatchGames/index.php:56
+msgid "next"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/index.php:55
+#: ./templates/MatchGames/index.php:57
+msgid "last"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/index.php:57
+#: ./templates/MatchGames/index.php:59
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/view.php:12
+msgid "Delete Competitor Player"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/view.php:22
+msgid "Competitor"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/view.php:26
+msgid "Player"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/view.php:30
+#: ./templates/MatchGames/view.php:26
+msgid "Id"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/view.php:34
+msgid "Position"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/view.php:38
+#: ./templates/MatchGames/view.php:42
+msgid "Created"
+msgstr ""
+
+#: ./templates/CompetitorPlayers/view.php:42
+#: ./templates/MatchGames/view.php:46
+msgid "Modified"
+msgstr ""
+
+#: ./templates/Courts/add.php:7
+#: ./templates/Courts/add.php:13
+msgid "Dodaj igrišče"
+msgstr ""
+
+#: ./templates/Courts/add.php:15
+msgid "Določi novo igrišče za turnir"
+msgstr ""
+
+#: ./templates/MatchGames/add.php:12
+#: ./templates/MatchGames/edit.php:17
+#: ./templates/MatchGames/view.php:13
+msgid "List Match Games"
+msgstr ""
+
+#: ./templates/MatchGames/add.php:19
+msgid "Add Match Game"
+msgstr ""
+
+#: ./templates/MatchGames/edit.php:24
+#: ./templates/MatchGames/view.php:11
+msgid "Edit Match Game"
+msgstr ""
+
+#: ./templates/MatchGames/index.php:8
+#: ./templates/MatchGames/view.php:14
+msgid "New Match Game"
+msgstr ""
+
+#: ./templates/MatchGames/index.php:9
+msgid "Match Games"
+msgstr ""
+
+#: ./templates/MatchGames/view.php:12
+msgid "Delete Match Game"
+msgstr ""
+
+#: ./templates/MatchGames/view.php:22
+msgid "Match"
+msgstr ""
+
+#: ./templates/MatchGames/view.php:30
+msgid "Sequence"
+msgstr ""
+
+#: ./templates/MatchGames/view.php:34
+msgid "Score1"
+msgstr ""
+
+#: ./templates/MatchGames/view.php:38
+msgid "Score2"
+msgstr ""
+
+#: ./templates/element/CompetitorPlayers/form.php:45
+#: ./templates/element/Competitors/form.php:62
+#: ./templates/element/Courts/form.php:33
+msgid "Shrani"
+msgstr ""
+
+#: ./templates/element/Courts/form.php:17
+msgid "Ime igrišča"
+msgstr ""
+
+#: ./templates/element/Courts/form.php:22
+msgid "Vrstni red prikaza"
+msgstr ""
+
+#: ./templates/element/Courts/form.php:30
+msgid "Prekliči"
+msgstr ""
+
+#: ./templates/layout/error.php:36
+msgid "Back"
+msgstr ""
+

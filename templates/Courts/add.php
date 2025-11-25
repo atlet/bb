@@ -4,15 +4,15 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Court $court
  */
-$this->assign('title', 'Dodaj igrišče');
+$this->assign('title', __('Dodaj igrišče'));
 ?>
 
 <div class="bt-page">
     <div class="bt-header">
         <div>
-            <h1 class="bt-header-title">Dodaj igrišče</h1>
+            <h1 class="bt-header-title"><?= __('Dodaj igrišče') ?></h1>
             <p class="bt-header-subtitle">
-                Določi novo igrišče za turnir
+                <?= __('Določi novo igrišče za turnir') ?>
             </p>
         </div>
         <div class="bt-actions">
