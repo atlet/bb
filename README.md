@@ -1,4 +1,4 @@
-# 🏸 Badminton Tournament Manager
+# 🏸 Upravljavnik za turnirje
 
 Badminton Tournament Manager je CakePHP aplikacija za vodenje turnirjev v badmintonu.
 
@@ -76,9 +76,21 @@ bin/cake migrations migrate
 bin/cake migrations seed
 
 bin/cake server
-
-"" 
 ```
+
+# 🏸 Badminton Tournament Manager
+
+Badminton Tournament Manager is a CakePHP application for managing badminton tournaments.
+
+The main idea:
+- you create a **tournament**,
+- inside it you define **events** (categories),
+- the application automatically generates all match **pairings** (without repetition),
+- the application **automatically generates all match pairings** (without repetition),
+- when entering or updating a result, **it recalculates** wins, losses, and statistics.
+
+---    
+
 ## Avtorji
 - Andraž Prinčič (vodja razvoja)
 - Rok Meglič (pomočnik)
