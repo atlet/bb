@@ -69,15 +69,25 @@ Namesti docker in docker composer. [Navodila](https://docs.docker.com/compose/in
 git clone https://github.com/USERNAME/badminton-tournament.git
 cd badminton-tournament
 
-composer install
-
 cp config/app_local.example.php config/app_local.php
 # v config/app_local.php nastavi povezavo na bazo
+```
+
+Poženemo docker z ukazom
+
+```bash
+docker compose up
+```
+
+Vstopimo v contejner
+
+```bash
+docker compose exec app bash
+
+composer install
 
 bin/cake migrations migrate
 bin/cake migrations seed
-
-bin/cake server
 ```
 
 Nastavitve baze - dodaj v config/app_local.php.
