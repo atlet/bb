@@ -44,11 +44,11 @@ class PlayersController extends AppController {
         if ($this->request->is('post')) {
             $player = $this->Players->patchEntity($player, $this->request->getData());
             if ($this->Players->save($player)) {
-                $this->Flash->success(__('The player has been saved.'));
+                $this->Flash->success(__('Zapis je bil uspešno shranjen.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The player could not be saved. Please, try again.'));
+            $this->Flash->error(__('Napaka pri shranjevanju. Prosim, odpravite napake.'));
         }
         $this->set(compact('player'));
     }
@@ -65,11 +65,11 @@ class PlayersController extends AppController {
         if ($this->request->is(['patch', 'post', 'put'])) {
             $player = $this->Players->patchEntity($player, $this->request->getData());
             if ($this->Players->save($player)) {
-                $this->Flash->success(__('The player has been saved.'));
+                $this->Flash->success(__('Zapis je bil uspešno shranjen.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The player could not be saved. Please, try again.'));
+            $this->Flash->error(__('Napaka pri shranjevanju. Prosim, odpravite napake.'));
         }
         $this->set(compact('player'));
     }
@@ -85,9 +85,9 @@ class PlayersController extends AppController {
         $this->request->allowMethod(['post', 'delete']);
         $player = $this->Players->get($id);
         if ($this->Players->delete($player)) {
-            $this->Flash->success(__('The player has been deleted.'));
+            $this->Flash->success(__('Zapis je bil uspešno izbrisan.'));
         } else {
-            $this->Flash->error(__('The player could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Napaka pri izbrisu. Prosim, odpravite napake.'));
         }
 
         return $this->redirect(['action' => 'index']);
