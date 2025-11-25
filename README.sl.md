@@ -97,7 +97,10 @@ Vstopimo v contejner
 
 ```bash
 docker compose exec app bash
+```
 
+Odpremo dodatno terminalno okno in gremo v izvajanje:
+```
 composer install
 
 bin/cake migrations migrate
