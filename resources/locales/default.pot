@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-11-25 20:02+0000\n"
+"POT-Creation-Date: 2025-11-25 20:28+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -44,110 +44,63 @@ msgstr ""
 
 #: ./src/Controller/CourtsController.php:49
 #: ./src/Controller/CourtsController.php:72
+#: ./src/Controller/MatchGamesController.php:51
+#: ./src/Controller/MatchGamesController.php:74
+#: ./src/Controller/PlayersController.php:47
+#: ./src/Controller/PlayersController.php:68
+#: ./src/Controller/TournamentEventsController.php:52
+#: ./src/Controller/TournamentEventsController.php:75
+#: ./src/Controller/TournamentMatchesController.php:52
+#: ./src/Controller/TournamentMatchesController.php:78
+#: ./src/Controller/TournamentsController.php:47
+#: ./src/Controller/TournamentsController.php:68
 msgid "Zapis je bil uspešno shranjen."
 msgstr ""
 
 #: ./src/Controller/CourtsController.php:53
 #: ./src/Controller/CourtsController.php:76
+#: ./src/Controller/MatchGamesController.php:55
+#: ./src/Controller/MatchGamesController.php:78
+#: ./src/Controller/PlayersController.php:51
+#: ./src/Controller/PlayersController.php:72
+#: ./src/Controller/TournamentEventsController.php:56
+#: ./src/Controller/TournamentEventsController.php:79
+#: ./src/Controller/TournamentMatchesController.php:57
+#: ./src/Controller/TournamentMatchesController.php:83
+#: ./src/Controller/TournamentsController.php:51
+#: ./src/Controller/TournamentsController.php:72
 msgid "Napaka pri shranjevanju. Prosim, odpravite napake."
 msgstr ""
 
 #: ./src/Controller/CourtsController.php:94
+#: ./src/Controller/MatchGamesController.php:96
+#: ./src/Controller/PlayersController.php:88
+#: ./src/Controller/TournamentEventsController.php:97
+#: ./src/Controller/TournamentMatchesController.php:103
+#: ./src/Controller/TournamentsController.php:88
 msgid "Zapis je bil uspešno izbrisan."
 msgstr ""
 
 #: ./src/Controller/CourtsController.php:96
+#: ./src/Controller/MatchGamesController.php:98
+#: ./src/Controller/PlayersController.php:90
+#: ./src/Controller/TournamentEventsController.php:99
+#: ./src/Controller/TournamentMatchesController.php:105
+#: ./src/Controller/TournamentsController.php:90
 msgid "Napaka pri izbrisu. Prosim, odpravite napake."
 msgstr ""
 
-#: ./src/Controller/MatchGamesController.php:51
-#: ./src/Controller/MatchGamesController.php:74
-msgid "The match game has been saved."
+#: ./templates/CompetitorPlayers/add.php:10
+#: ./templates/CompetitorPlayers/add.php:16
+msgid "Dodaj igralca v ekipo"
 msgstr ""
 
-#: ./src/Controller/MatchGamesController.php:55
-#: ./src/Controller/MatchGamesController.php:78
-msgid "The match game could not be saved. Please, try again."
+#: ./templates/CompetitorPlayers/add.php:18
+msgid "Dodaj novega igralca v par / ekipo:"
 msgstr ""
 
-#: ./src/Controller/MatchGamesController.php:96
-msgid "The match game has been deleted."
-msgstr ""
-
-#: ./src/Controller/MatchGamesController.php:98
-msgid "The match game could not be deleted. Please, try again."
-msgstr ""
-
-#: ./src/Controller/PlayersController.php:47
-#: ./src/Controller/PlayersController.php:68
-msgid "The player has been saved."
-msgstr ""
-
-#: ./src/Controller/PlayersController.php:51
-#: ./src/Controller/PlayersController.php:72
-msgid "The player could not be saved. Please, try again."
-msgstr ""
-
-#: ./src/Controller/PlayersController.php:88
-msgid "The player has been deleted."
-msgstr ""
-
-#: ./src/Controller/PlayersController.php:90
-msgid "The player could not be deleted. Please, try again."
-msgstr ""
-
-#: ./src/Controller/TournamentEventsController.php:52
-#: ./src/Controller/TournamentEventsController.php:75
-msgid "The tournament event has been saved."
-msgstr ""
-
-#: ./src/Controller/TournamentEventsController.php:56
-#: ./src/Controller/TournamentEventsController.php:79
-msgid "The tournament event could not be saved. Please, try again."
-msgstr ""
-
-#: ./src/Controller/TournamentEventsController.php:97
-msgid "The tournament event has been deleted."
-msgstr ""
-
-#: ./src/Controller/TournamentEventsController.php:99
-msgid "The tournament event could not be deleted. Please, try again."
-msgstr ""
-
-#: ./src/Controller/TournamentMatchesController.php:52
-#: ./src/Controller/TournamentMatchesController.php:78
-msgid "The tournament match has been saved."
-msgstr ""
-
-#: ./src/Controller/TournamentMatchesController.php:57
-#: ./src/Controller/TournamentMatchesController.php:83
-msgid "The tournament match could not be saved. Please, try again."
-msgstr ""
-
-#: ./src/Controller/TournamentMatchesController.php:103
-msgid "The tournament match has been deleted."
-msgstr ""
-
-#: ./src/Controller/TournamentMatchesController.php:105
-msgid "The tournament match could not be deleted. Please, try again."
-msgstr ""
-
-#: ./src/Controller/TournamentsController.php:47
-#: ./src/Controller/TournamentsController.php:68
-msgid "The tournament has been saved."
-msgstr ""
-
-#: ./src/Controller/TournamentsController.php:51
-#: ./src/Controller/TournamentsController.php:72
-msgid "The tournament could not be saved. Please, try again."
-msgstr ""
-
-#: ./src/Controller/TournamentsController.php:88
-msgid "The tournament has been deleted."
-msgstr ""
-
-#: ./src/Controller/TournamentsController.php:90
-msgid "The tournament could not be deleted. Please, try again."
+#: ./templates/CompetitorPlayers/add.php:23
+msgid "Nazaj na ekipo"
 msgstr ""
 
 #: ./templates/CompetitorPlayers/edit.php:12
@@ -267,13 +220,337 @@ msgstr ""
 msgid "Modified"
 msgstr ""
 
+#: ./templates/Competitors/add.php:7
+#: ./templates/Competitors/add.php:13
+msgid "Dodaj tekmovalca"
+msgstr ""
+
+#: ./templates/Competitors/add.php:15
+msgid "Ustvari nov par / ekipo za dogodek"
+msgstr ""
+
+#: ./templates/Competitors/add.php:19
+#: ./templates/Competitors/edit.php:21
+#: ./templates/Courts/add.php:19
+#: ./templates/Courts/edit.php:19
+#: ./templates/Courts/view.php:27
+#: ./templates/Players/edit.php:21
+#: ./templates/Players/view.php:21
+msgid "Nazaj na seznam"
+msgstr ""
+
+#: ./templates/Competitors/edit.php:7
+#: ./templates/Competitors/edit.php:14
+msgid "Uredi tekmovalca"
+msgstr ""
+
+#: ./templates/Competitors/edit.php:24
+#: ./templates/Competitors/index.php:96
+#: ./templates/Competitors/view.php:39
+#: ./templates/Courts/edit.php:22
+#: ./templates/Courts/index.php:80
+#: ./templates/Courts/view.php:40
+#: ./templates/Players/view.php:27
+msgid "Izbriši"
+msgstr ""
+
+#: ./templates/Competitors/edit.php:25
+#: ./templates/Competitors/index.php:97
+msgid "Res želiš izbrisati tega tekmovalca?"
+msgstr ""
+
+#: ./templates/Competitors/index.php:7
+#: ./templates/Competitors/index.php:13
+#: ./templates/Courts/view.php:102
+msgid "Tekmovalci"
+msgstr ""
+
+#: ./templates/Competitors/index.php:15
+msgid "Seznam parov / ekip v turnirjih"
+msgstr ""
+
+#: ./templates/Competitors/index.php:28
+msgid "Seznam vseh tekmovalcev"
+msgstr ""
+
+#: ./templates/Competitors/index.php:39
+#: ./templates/Competitors/view.php:57
+#: ./templates/Competitors/view.php:156
+#: ./templates/Courts/index.php:39
+#: ./templates/Courts/view.php:100
+#: ./templates/Players/index.php:39
+#: ./templates/Players/view.php:17
+msgid "ID"
+msgstr ""
+
+#: ./templates/Competitors/index.php:40
+#: ./templates/Competitors/view.php:62
+#: ./templates/element/Competitors/form.php:17
+msgid "Ime para / ekipe"
+msgstr ""
+
+#: ./templates/Competitors/index.php:41
+#: ./templates/Competitors/view.php:17
+#: ./templates/Competitors/view.php:26
+#: ./templates/Courts/view.php:101
+#: ./templates/Players/view.php:106
+msgid "Dogodek"
+msgstr ""
+
+#: ./templates/Competitors/index.php:42
+#: ./templates/Competitors/view.php:83
+#: ./templates/element/Competitors/form.php:40
+msgid "Zmage"
+msgstr ""
+
+#: ./templates/Competitors/index.php:43
+#: ./templates/Competitors/view.php:90
+#: ./templates/element/Competitors/form.php:49
+msgid "Porazi"
+msgstr ""
+
+#: ./templates/Competitors/index.php:44
+#: ./templates/Competitors/view.php:69
+msgid "Tip"
+msgstr ""
+
+#: ./templates/Competitors/index.php:45
+#: ./templates/Courts/index.php:43
+#: ./templates/Players/index.php:44
+msgid "Akcije"
+msgstr ""
+
+#: ./templates/Competitors/index.php:52
+msgid "Trenutno ni vnešenih tekmovalcev."
+msgstr ""
+
+#: ./templates/Competitors/index.php:83
+#: ./templates/Competitors/view.php:71
+msgid "Dvojica / ekipa"
+msgstr ""
+
+#: ./templates/Competitors/index.php:85
+#: ./templates/Competitors/view.php:71
+msgid "Posameznik"
+msgstr ""
+
+#: ./templates/Competitors/index.php:90
+#: ./templates/Courts/index.php:74
+msgid "Pogled"
+msgstr ""
+
+#: ./templates/Competitors/index.php:93
+#: ./templates/Competitors/view.php:36
+#: ./templates/Courts/index.php:77
+#: ./templates/Courts/view.php:37
+#: ./templates/Players/view.php:24
+msgid "Uredi"
+msgstr ""
+
+#: ./templates/Competitors/index.php:113
+#: ./templates/Courts/index.php:97
+#: ./templates/Players/index.php:103
+msgid "Stran {{page}} od {{pages}} · skupaj {{count}} zapisov"
+msgstr ""
+
+#: ./templates/Competitors/index.php:117
+#: ./templates/Courts/index.php:101
+#: ./templates/Players/index.php:107
+msgid "« Prva"
+msgstr ""
+
+#: ./templates/Competitors/index.php:118
+#: ./templates/Courts/index.php:102
+#: ./templates/Players/index.php:108
+msgid "‹ Nazaj"
+msgstr ""
+
+#: ./templates/Competitors/index.php:120
+#: ./templates/Courts/index.php:104
+#: ./templates/Players/index.php:110
+msgid "Naprej ›"
+msgstr ""
+
+#: ./templates/Competitors/index.php:121
+#: ./templates/Courts/index.php:105
+#: ./templates/Players/index.php:111
+msgid "Zadnja »"
+msgstr ""
+
+#: ./templates/Competitors/view.php:7
+#: ./templates/Competitors/view.php:14
+msgid "Tekmovalec"
+msgstr ""
+
+#: ./templates/Competitors/view.php:21
+msgid "neznan dogodek"
+msgstr ""
+
+#: ./templates/Competitors/view.php:32
+#: ./templates/Players/add.php:7
+#: ./templates/Players/add.php:13
+#: ./templates/Players/index.php:19
+msgid "Dodaj igralca"
+msgstr ""
+
+#: ./templates/Competitors/view.php:40
+msgid "Res želiš izbrisati ta dogodek?"
+msgstr ""
+
+#: ./templates/Competitors/view.php:52
+#: ./templates/Courts/view.php:52
+#: ./templates/Players/view.php:40
+msgid "Osnovni podatki"
+msgstr ""
+
+#: ./templates/Competitors/view.php:76
+msgid "Seed"
+msgstr ""
+
+#: ./templates/Competitors/view.php:97
+#: ./templates/Players/view.php:79
+msgid "Ustvarjen"
+msgstr ""
+
+#: ./templates/Competitors/view.php:98
+#: ./templates/Players/view.php:80
+msgid "Spremenjen"
+msgstr ""
+
+#: ./templates/Competitors/view.php:109
+msgid "Igralci v paru / ekipi"
+msgstr ""
+
+#: ./templates/Competitors/view.php:115
+msgid "Ni dodeljenih igralcev."
+msgstr ""
+
+#: ./templates/Competitors/view.php:121
+#: ./templates/Players/view.php:105
+msgid "Pozicija"
+msgstr ""
+
+#: ./templates/Competitors/view.php:122
+#: ./templates/Players/view.php:7
+#: ./templates/Players/view.php:14
+#: ./templates/element/CompetitorPlayers/form.php:21
+msgid "Igralec"
+msgstr ""
+
+#: ./templates/Competitors/view.php:133
+msgid "neznan"
+msgstr ""
+
+#: ./templates/Competitors/view.php:149
+msgid "Tekme tega tekmovalca"
+msgstr ""
+
+#: ./templates/Competitors/view.php:157
+msgid "Nasprotnik"
+msgstr ""
+
+#: ./templates/Competitors/view.php:158
+msgid "Rezultat"
+msgstr ""
+
+#: ./templates/Competitors/view.php:159
+#: ./templates/Courts/view.php:103
+#: ./templates/element/TournamentEvents/form.php:30
+#: ./templates/element/TournamentMatches/form.php:48
+#: ./templates/element/Tournaments/form.php:42
+msgid "Status"
+msgstr ""
+
+#: ./templates/Competitors/view.php:170
+#: ./templates/Courts/view.php:109
+#: ./templates/Courts/view.php:110
+msgid "TBD"
+msgstr ""
+
 #: ./templates/Courts/add.php:7
 #: ./templates/Courts/add.php:13
+#: ./templates/Courts/index.php:19
 msgid "Dodaj igrišče"
 msgstr ""
 
 #: ./templates/Courts/add.php:15
 msgid "Določi novo igrišče za turnir"
+msgstr ""
+
+#: ./templates/Courts/edit.php:7
+#: ./templates/Courts/edit.php:13
+msgid "Uredi igrišče"
+msgstr ""
+
+#: ./templates/Courts/edit.php:23
+#: ./templates/Courts/index.php:81
+#: ./templates/Courts/view.php:41
+msgid "Res želiš izbrisati to igrišče?"
+msgstr ""
+
+#: ./templates/Courts/index.php:7
+#: ./templates/Courts/index.php:13
+msgid "Igrišča"
+msgstr ""
+
+#: ./templates/Courts/index.php:15
+msgid "Seznam vseh igrišč po turnirjih"
+msgstr ""
+
+#: ./templates/Courts/index.php:28
+msgid "Seznam igrišč"
+msgstr ""
+
+#: ./templates/Courts/index.php:31
+#: ./templates/Players/index.php:31
+msgid "{{count}} zapisov"
+msgstr ""
+
+#: ./templates/Courts/index.php:40
+#: ./templates/Courts/view.php:57
+#: ./templates/element/Courts/form.php:17
+msgid "Ime igrišča"
+msgstr ""
+
+#: ./templates/Courts/index.php:41
+#: ./templates/Courts/view.php:18
+#: ./templates/Courts/view.php:64
+msgid "Turnir"
+msgstr ""
+
+#: ./templates/Courts/index.php:42
+#: ./templates/Courts/view.php:75
+msgid "Vrstni red"
+msgstr ""
+
+#: ./templates/Courts/index.php:50
+msgid "Trenutno ni vnešenih igrišč."
+msgstr ""
+
+#: ./templates/Courts/view.php:7
+#: ./templates/Courts/view.php:15
+#: ./templates/element/TournamentMatches/form.php:20
+msgid "Igrišče"
+msgstr ""
+
+#: ./templates/Courts/view.php:31
+msgid "Nazaj na turnir"
+msgstr ""
+
+#: ./templates/Courts/view.php:82
+msgid "Ustvarjeno"
+msgstr ""
+
+#: ./templates/Courts/view.php:83
+msgid "Spremenjeno"
+msgstr ""
+
+#: ./templates/Courts/view.php:93
+msgid "Tekme na tem igrišču"
+msgstr ""
+
+#: ./templates/Courts/view.php:117
+msgid "vs"
 msgstr ""
 
 #: ./templates/MatchGames/add.php:12
@@ -320,20 +597,9 @@ msgstr ""
 msgid "Score2"
 msgstr ""
 
-#: ./templates/Players/add.php:7
-#: ./templates/Players/add.php:13
-#: ./templates/Players/index.php:19
-msgid "Dodaj igralca"
-msgstr ""
-
 #: ./templates/Players/edit.php:7
 #: ./templates/Players/edit.php:14
 msgid "Uredi igralca"
-msgstr ""
-
-#: ./templates/Players/edit.php:21
-#: ./templates/Players/view.php:21
-msgid "Nazaj na seznam"
 msgstr ""
 
 #: ./templates/Players/edit.php:25
@@ -343,6 +609,8 @@ msgstr ""
 
 #: ./templates/Players/index.php:7
 #: ./templates/Players/index.php:13
+#: ./templates/layout/default.php:52
+#: ./templates/layout/default.php:83
 msgid "Igralci"
 msgstr ""
 
@@ -354,37 +622,27 @@ msgstr ""
 msgid "Seznam igralcev"
 msgstr ""
 
-#: ./templates/Players/index.php:31
-msgid "{{count}} zapisov"
-msgstr ""
-
-#: ./templates/Players/index.php:39
-#: ./templates/Players/view.php:17
-msgid "ID"
-msgstr ""
-
 #: ./templates/Players/index.php:40
 #: ./templates/Players/view.php:52
+#: ./templates/element/Players/form.php:19
 msgid "Priimek"
 msgstr ""
 
 #: ./templates/Players/index.php:41
 #: ./templates/Players/view.php:45
+#: ./templates/element/Players/form.php:14
 msgid "Ime"
 msgstr ""
 
 #: ./templates/Players/index.php:42
 #: ./templates/Players/view.php:59
+#: ./templates/element/Players/form.php:27
 msgid "Spol"
 msgstr ""
 
 #: ./templates/Players/index.php:43
 #: ./templates/Players/view.php:72
 msgid "Rating"
-msgstr ""
-
-#: ./templates/Players/index.php:44
-msgid "Akcije"
 msgstr ""
 
 #: ./templates/Players/index.php:51
@@ -399,57 +657,14 @@ msgstr ""
 msgid "Ž"
 msgstr ""
 
-#: ./templates/Players/index.php:103
-msgid "Stran {{page}} od {{pages}} · skupaj {{count}} zapisov"
-msgstr ""
-
-#: ./templates/Players/index.php:107
-msgid "« Prva"
-msgstr ""
-
-#: ./templates/Players/index.php:108
-msgid "‹ Nazaj"
-msgstr ""
-
-#: ./templates/Players/index.php:110
-msgid "Naprej ›"
-msgstr ""
-
-#: ./templates/Players/index.php:111
-msgid "Zadnja »"
-msgstr ""
-
-#: ./templates/Players/view.php:7
-#: ./templates/Players/view.php:14
-msgid "Igralec"
-msgstr ""
-
-#: ./templates/Players/view.php:24
-msgid "Uredi"
-msgstr ""
-
-#: ./templates/Players/view.php:27
-msgid "Izbriši"
-msgstr ""
-
-#: ./templates/Players/view.php:40
-msgid "Osnovni podatki"
-msgstr ""
-
 #: ./templates/Players/view.php:62
+#: ./templates/element/Players/form.php:31
 msgid "Moški"
 msgstr ""
 
 #: ./templates/Players/view.php:64
+#: ./templates/element/Players/form.php:32
 msgid "Ženska"
-msgstr ""
-
-#: ./templates/Players/view.php:79
-msgid "Ustvarjen"
-msgstr ""
-
-#: ./templates/Players/view.php:80
-msgid "Spremenjen"
 msgstr ""
 
 #: ./templates/Players/view.php:91
@@ -464,30 +679,183 @@ msgstr ""
 msgid "Par / ekipa"
 msgstr ""
 
-#: ./templates/Players/view.php:105
-msgid "Pozicija"
+#: ./templates/element/CompetitorPlayers/form.php:23
+msgid "-- Izberi igralca --"
 msgstr ""
 
-#: ./templates/Players/view.php:106
-msgid "Dogodek"
+#: ./templates/element/CompetitorPlayers/form.php:29
+msgid "Pozicija v paru"
+msgstr ""
+
+#: ./templates/element/CompetitorPlayers/form.php:35
+msgid "Za dvojice uporabi 1 in 2; pri single turnirjih pusti 1."
+msgstr ""
+
+#: ./templates/element/CompetitorPlayers/form.php:42
+#: ./templates/element/Competitors/form.php:59
+#: ./templates/element/Courts/form.php:30
+#: ./templates/element/Players/form.php:47
+#: ./templates/element/TournamentEvents/form.php:59
+#: ./templates/element/TournamentMatches/form.php:102
+#: ./templates/element/Tournaments/form.php:53
+msgid "Prekliči"
 msgstr ""
 
 #: ./templates/element/CompetitorPlayers/form.php:45
 #: ./templates/element/Competitors/form.php:62
 #: ./templates/element/Courts/form.php:33
+#: ./templates/element/Players/form.php:50
+#: ./templates/element/TournamentEvents/form.php:62
+#: ./templates/element/TournamentMatches/form.php:105
+#: ./templates/element/Tournaments/form.php:56
 msgid "Shrani"
 msgstr ""
 
-#: ./templates/element/Courts/form.php:17
-msgid "Ime igrišča"
+#: ./templates/element/Competitors/form.php:23
+msgid "Je dvojica / ekipa?"
+msgstr ""
+
+#: ./templates/element/Competitors/form.php:30
+msgid "Seed (razvrstitev)"
+msgstr ""
+
+#: ./templates/element/Competitors/form.php:44
+#: ./templates/element/Competitors/form.php:53
+msgid "Samodejno se izračuna iz odigranih tekem."
 msgstr ""
 
 #: ./templates/element/Courts/form.php:22
 msgid "Vrstni red prikaza"
 msgstr ""
 
-#: ./templates/element/Courts/form.php:30
-msgid "Prekliči"
+#: ./templates/element/Players/form.php:29
+msgid "-- ni podan --"
+msgstr ""
+
+#: ./templates/element/Players/form.php:38
+msgid "Rating (opcijsko)"
+msgstr ""
+
+#: ./templates/element/TournamentEvents/form.php:17
+msgid "Ime dogodka"
+msgstr ""
+
+#: ./templates/element/TournamentEvents/form.php:22
+msgid "Koda (npr. MS, MD, MXD)"
+msgstr ""
+
+#: ./templates/element/TournamentEvents/form.php:33
+#: ./templates/element/Tournaments/form.php:46
+msgid "aktiven"
+msgstr ""
+
+#: ./templates/element/TournamentEvents/form.php:34
+#: ./templates/element/Tournaments/form.php:47
+msgid "zaključen"
+msgstr ""
+
+#: ./templates/element/TournamentEvents/form.php:40
+msgid "Best of (št. setov)"
+msgstr ""
+
+#: ./templates/element/TournamentEvents/form.php:44
+msgid "3 = igra se do 2 dobljenih; 5 = do 3 dobljenih."
+msgstr ""
+
+#: ./templates/element/TournamentEvents/form.php:52
+msgid "Točke na set"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:22
+msgid "-- brez igrišča --"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:30
+msgid "Tekmovalec 1"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:32
+#: ./templates/element/TournamentMatches/form.php:40
+msgid "-- izberi --"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:38
+msgid "Tekmovalec 2"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:51
+msgid "planirana"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:52
+msgid "v teku"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:53
+msgid "končana"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:60
+msgid "Zmagovalec (opcijsko)"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:62
+msgid "-- avtomatsko iz rezultata --"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:70
+msgid "Dobljeni seti – tekmovalec 1"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:77
+msgid "Dobljeni seti – tekmovalec 2"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:87
+#: ./templates/element/Tournaments/form.php:26
+msgid "Začetek"
+msgstr ""
+
+#: ./templates/element/TournamentMatches/form.php:94
+#: ./templates/element/Tournaments/form.php:33
+msgid "Konec"
+msgstr ""
+
+#: ./templates/element/Tournaments/form.php:13
+msgid "Ime turnirja"
+msgstr ""
+
+#: ./templates/element/Tournaments/form.php:19
+msgid "Lokacija"
+msgstr ""
+
+#: ./templates/element/Tournaments/form.php:45
+msgid "osnutek"
+msgstr ""
+
+#: ./templates/layout/default.php:15
+msgid "Badminton turnir"
+msgstr ""
+
+#: ./templates/layout/default.php:35
+msgid "BT"
+msgstr ""
+
+#: ./templates/layout/default.php:39
+msgid "Badminton Tools"
+msgstr ""
+
+#: ./templates/layout/default.php:42
+msgid "Turnirski nadzor · admin"
+msgstr ""
+
+#: ./templates/layout/default.php:49
+#: ./templates/layout/default.php:80
+msgid "Turnirji"
+msgstr ""
+
+#: ./templates/layout/default.php:64
+msgid "Odpri meni"
 msgstr ""
 
 #: ./templates/layout/error.php:36
