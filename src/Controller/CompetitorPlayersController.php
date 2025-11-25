@@ -91,11 +91,11 @@ class CompetitorPlayersController extends AppController {
         if ($this->request->is(['patch', 'post', 'put'])) {
             $competitorPlayer = $this->CompetitorPlayers->patchEntity($competitorPlayer, $this->request->getData());
             if ($this->CompetitorPlayers->save($competitorPlayer)) {
-                $this->Flash->success(__('The competitor player has been saved.'));
+                $this->Flash->success(__('Igralec je bil shranjen.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The competitor player could not be saved. Please, try again.'));
+            $this->Flash->error(__('Igralca ni bilo mogoče shraniti. Prosim poskusi ponovno.'));
         }
         $competitors = $this->CompetitorPlayers->Competitors->find('list', limit: 200)->all();
         $players = $this->CompetitorPlayers->Players->find('list', limit: 200)->all();
@@ -113,9 +113,9 @@ class CompetitorPlayersController extends AppController {
         $this->request->allowMethod(['post', 'delete']);
         $competitorPlayer = $this->CompetitorPlayers->get($id);
         if ($this->CompetitorPlayers->delete($competitorPlayer)) {
-            $this->Flash->success(__('The competitor player has been deleted.'));
+            $this->Flash->success(__('Igralec je bil izbrisan.'));
         } else {
-            $this->Flash->error(__('The competitor player could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Igralca ni bilo mogoče izbrisati. Prosim poskusi ponovno.'));
         }
 
         return $this->redirect(['action' => 'index']);
