@@ -17,9 +17,9 @@
 
     <div class="bt-form-group">
         <?= $this->Form->control('court_id', [
-            'label' => 'Igrišče',
+            'label' => __('Igrišče'),
             'options' => $courts,
-            'empty' => '-- brez igrišča --',
+            'empty' => __('-- brez igrišča --'),
         ]) ?>
     </div>
 </div>
@@ -27,17 +27,17 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="bt-form-group">
         <?= $this->Form->control('competitor1_id', [
-            'label' => 'Tekmovalec 1',
+            'label' => __('Tekmovalec 1'),
             'options' => $competitors,
-            'empty' => '-- izberi --',
+            'empty' => __('-- izberi --'),
         ]) ?>
     </div>
 
     <div class="bt-form-group">
         <?= $this->Form->control('competitor2_id', [
-            'label' => 'Tekmovalec 2',
+            'label' => __('Tekmovalec 2'),
             'options' => $competitors,
-            'empty' => '-- izberi --',
+            'empty' => __('-- izberi --'),
         ]) ?>
     </div>
 </div>
@@ -45,21 +45,21 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="bt-form-group">
         <?= $this->Form->control('status', [
-            'label' => 'Status',
+            'label' => __('Status'),
             'type' => 'select',
             'options' => [
-                'scheduled' => 'planirana',
-                'in_progress' => 'v teku',
-                'finished' => 'končana',
+                'scheduled' => __('planirana'),
+                'in_progress' => __('v teku'),
+                'finished' => __('končana'),
             ],
         ]) ?>
     </div>
 
     <div class="bt-form-group">
         <?= $this->Form->control('winner_id', [
-            'label' => 'Zmagovalec (opcijsko)',
+            'label' => __('Zmagovalec (opcijsko)'),
             'options' => $competitors,
-            'empty' => '-- avtomatsko iz rezultata --',
+            'empty' => __('-- avtomatsko iz rezultata --'),
         ]) ?>
     </div>
 </div>
@@ -67,14 +67,14 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="bt-form-group">
         <?= $this->Form->control('current_score1', [
-            'label' => 'Dobljeni seti – tekmovalec 1',
+            'label' => __('Dobljeni seti – tekmovalec 1'),
             'type' => 'number',
             'min' => 0,
         ]) ?>
     </div>
     <div class="bt-form-group">
         <?= $this->Form->control('current_score2', [
-            'label' => 'Dobljeni seti – tekmovalec 2',
+            'label' => __('Dobljeni seti – tekmovalec 2'),
             'type' => 'number',
             'min' => 0,
         ]) ?>
@@ -84,14 +84,14 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="bt-form-group">
         <?= $this->Form->control('started_at', [
-            'label' => 'Začetek',
+            'label' => __('Začetek'),
             'type' => 'datetime',
             'empty' => true,
         ]) ?>
     </div>
     <div class="bt-form-group">
         <?= $this->Form->control('finished_at', [
-            'label' => 'Konec',
+            'label' => __('Konec'),
             'type' => 'datetime',
             'empty' => true,
         ]) ?>
@@ -99,10 +99,10 @@
 </div>
 
 <div class="mt-4 flex justify-end gap-2">
-    <?= $this->Html->link('Prekliči', ['controller' => 'TournamentEvents', 'action' => 'view', $tournament_event_id], [
+    <?= $this->Html->link(__('Prekliči'), ['controller' => 'TournamentEvents', 'action' => 'view', $tournament_event_id], [
         'class' => 'bt-button-secondary',
     ]) ?>
-    <?= $this->Form->button('Shrani', ['class' => 'bt-button']) ?>
+    <?= $this->Form->button(__('Shrani'), ['class' => 'bt-button']) ?>
 </div>
 
 <?= $this->Form->end() ?>

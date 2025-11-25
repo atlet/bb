@@ -4,19 +4,19 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Competitor $competitor
  */
-$this->assign('title', 'Dodaj tekmovalca');
+$this->assign('title', __('Dodaj tekmovalca'));
 ?>
 
 <div class="bt-page">
     <div class="bt-header">
         <div>
-            <h1 class="bt-header-title">Dodaj tekmovalca</h1>
+            <h1 class="bt-header-title"><?= __('Dodaj tekmovalca') ?></h1>
             <p class="bt-header-subtitle">
-                Ustvari nov par / ekipo za dogodek
+                <?= __('Ustvari nov par / ekipo za dogodek') ?>
             </p>
         </div>
         <div class="bt-actions">
-            <?= $this->Html->link('Nazaj na seznam', "/tournament-events/view/{$tournament_event_id}", [
+            <?= $this->Html->link(__('Nazaj na seznam'), "/tournament-events/view/{$tournament_event_id}", [
                 'class' => 'bt-button-secondary',
             ]) ?>
         </div>

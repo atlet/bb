@@ -11,12 +11,12 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="bt-form-group">
         <?= $this->Form->control('first_name', [
-            'label' => 'Ime',
+            'label' => __('Ime'),
         ]) ?>
     </div>
     <div class="bt-form-group">
         <?= $this->Form->control('last_name', [
-            'label' => 'Priimek',
+            'label' => __('Priimek'),
         ]) ?>
     </div>
 </div>
@@ -24,18 +24,18 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="bt-form-group">
         <?= $this->Form->control('gender', [
-            'label' => 'Spol',
+            'label' => __('Spol'),
             'type' => 'select',
-            'empty' => '-- ni podan --',
+            'empty' => __('-- ni podan --'),
             'options' => [
-                'M' => 'Moški',
-                'F' => 'Ženska',
+                'M' => __('Moški'),
+                'F' => __('Ženska'),
             ],
         ]) ?>
     </div>
     <div class="bt-form-group">
         <?= $this->Form->control('rating', [
-            'label' => 'Rating (opcijsko)',
+            'label' => __('Rating (opcijsko)'),
             'type' => 'number',
             'step' => '0.1',
             'min' => 0,
@@ -44,10 +44,10 @@
 </div>
 
 <div class="mt-4 flex justify-end gap-2">
-    <?= $this->Html->link('Prekliči', ['action' => 'index'], [
+    <?= $this->Html->link(__('Prekliči'), ['action' => 'index'], [
         'class' => 'bt-button-secondary',
     ]) ?>
-    <?= $this->Form->button('Shrani', ['class' => 'bt-button']) ?>
+    <?= $this->Form->button(__('Shrani'), ['class' => 'bt-button']) ?>
 </div>
 
 <?= $this->Form->end() ?>

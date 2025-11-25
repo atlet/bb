@@ -18,28 +18,28 @@
 
     <div class="bt-form-group md:col-span-2">
         <?= $this->Form->control('player_id', [
-            'label'   => 'Igralec',
+            'label'   => __('Igralec'),
             'options' => $players,
-            'empty'   => '-- Izberi igralca --',
+            'empty'   => __('-- Izberi igralca --'),
         ]) ?>
     </div>
 
     <div class="bt-form-group">
         <?= $this->Form->control('position', [
-            'label'   => 'Pozicija v paru',
+            'label'   => __('Pozicija v paru'),
             'type'    => 'number',
             'min'     => 1,
             'max'     => 2, // za dvojice; po želji spremeni
             'default' => 1,
             'templateVars' => [
-                'help' => 'Za dvojice uporabi 1 in 2; pri single turnirjih pusti 1.',
+                'help' => __('Za dvojice uporabi 1 in 2; pri single turnirjih pusti 1.'),
             ],
         ]) ?>
     </div>
 </div>
 
 <div class="mt-4 flex justify-end gap-2">
-    <?= $this->Html->link('Prekliči', "/competitors/view/{$competitor->id}", [
+    <?= $this->Html->link(__('Prekliči'), "/competitors/view/{$competitor->id}", [
         'class' => 'bt-button-secondary',
     ]) ?>
     <?= $this->Form->button(__('Shrani'), ['class' => 'bt-button']) ?>

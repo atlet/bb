@@ -7,20 +7,20 @@
  * @var array $players
  */
 
-$this->assign('title', 'Dodaj igralca v ekipo');
+$this->assign('title', __('Dodaj igralca v ekipo'));
 ?>
 
 <div class="bt-page">
     <div class="bt-header">
         <div>
-            <h1 class="bt-header-title">Dodaj igralca v ekipo</h1>
+            <h1 class="bt-header-title"><?= __('Dodaj igralca v ekipo') ?></h1>
             <p class="bt-header-subtitle">
-                Dodaj novega igralca v par / ekipo:
+                <?= __('Dodaj novega igralca v par / ekipo:') ?>
                 <strong><?= h($competitor->name) ?></strong>
             </p>
         </div>
         <div class="bt-actions">
-            <?= $this->Html->link('Nazaj na ekipo', "/competitors/view/{$competitor->id}", [
+            <?= $this->Html->link(__('Nazaj na ekipo'), "/competitors/view/{$competitor->id}", [
                 'class' => 'bt-button-secondary',
             ]) ?>
         </div>

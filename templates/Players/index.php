@@ -28,7 +28,7 @@ $this->assign('title', __('Igralci'));
                 <?= __('Seznam igralcev') ?>
             </div>
             <div class="text-[11px] text-slate-400">
-                <?= $this->Paginator->counter('{{count}} zapisov') ?>
+                <?= $this->Paginator->counter(__('{{count}} zapisov')) ?>
             </div>
         </div>
 

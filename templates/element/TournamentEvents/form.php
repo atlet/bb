@@ -14,12 +14,12 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="bt-form-group">
         <?= $this->Form->control('name', [
-            'label' => 'Ime dogodka',
+            'label' => __('Ime dogodka'),
         ]) ?>
     </div>
     <div class="bt-form-group">
         <?= $this->Form->control('code', [
-            'label' => 'Koda (npr. MS, MD, MXD)',
+            'label' => __('Koda (npr. MS, MD, MXD)'),
         ]) ?>
     </div>
 </div>
@@ -27,21 +27,21 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="bt-form-group">
         <?= $this->Form->control('status', [
-            'label' => 'Status',
+            'label' => __('Status'),
             'type' => 'select',
             'options' => [
-                'active' => 'aktiven',
-                'finished' => 'zaključen',
+                'active' => __('aktiven'),
+                'finished' => __('zaključen'),
             ],
         ]) ?>
     </div>
     <div class="bt-form-group">
         <?= $this->Form->control('best_of_games', [
-            'label' => 'Best of (št. setov)',
+            'label' => __('Best of (št. setov)'),
             'type' => 'number',
             'min' => 1,
             'templateVars' => [
-                'help' => '3 = igra se do 2 dobljenih; 5 = do 3 dobljenih.',
+                'help' => __('3 = igra se do 2 dobljenih; 5 = do 3 dobljenih.'),
             ],
         ]) ?>
     </div>
@@ -49,17 +49,17 @@
 
 <div class="bt-form-group">
     <?= $this->Form->control('points_per_game', [
-        'label' => 'Točke na set',
+        'label' => __('Točke na set'),
         'type' => 'number',
         'min' => 1,
     ]) ?>
 </div>
 
 <div class="mt-4 flex justify-end gap-2">
-    <?= $this->Html->link('Prekliči', ['controller' => 'Tournaments', 'action' => 'view', $tournament_id], [
+    <?= $this->Html->link(__('Prekliči'), ['controller' => 'Tournaments', 'action' => 'view', $tournament_id], [
         'class' => 'bt-button-secondary',
     ]) ?>
-    <?= $this->Form->button('Shrani', ['class' => 'bt-button']) ?>
+    <?= $this->Form->button(__('Shrani'), ['class' => 'bt-button']) ?>
 </div>
 
 <?= $this->Form->end() ?>

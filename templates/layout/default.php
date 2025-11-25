@@ -12,7 +12,7 @@
 <head>
     <?= $this->Html->charset() ?>
     <title>
-        <?= h($this->fetch('title') ?: 'Badminton turnir') ?>
+        <?= h($this->fetch('title') ?: __('Badminton turnir')) ?>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -32,24 +32,24 @@
                 <!-- Logo + naslov -->
                 <div class="flex items-center gap-2">
                     <span class="inline-flex items-center justify-center w-8 h-8 rounded-2xl bg-slate-900 text-white text-xs font-bold">
-                        BT
+                        <?= __('BT') ?>
                     </span>
                     <div>
                         <div class="text-sm font-semibold text-slate-800">
-                            Badminton Tools
+                            <?= __('Badminton Tools') ?>
                         </div>
                         <div class="text-xs text-slate-500">
-                            Turnirski nadzor · admin
+                            <?= __('Turnirski nadzor · admin') ?>
                         </div>
                     </div>
                 </div>
 
                 <!-- DESKTOP NAV -->
                 <nav class="hidden md:flex items-center gap-4 text-xs text-slate-600">
-                    <?= $this->Html->link('Turnirji', ['controller' => 'Tournaments', 'action' => 'index'], [
+                    <?= $this->Html->link(__('Turnirji'), ['controller' => 'Tournaments', 'action' => 'index'], [
                         'class' => 'hover:text-primary-600'
                     ]) ?>
-                    <?= $this->Html->link('Igralci', ['controller' => 'Players', 'action' => 'index'], [
+                    <?= $this->Html->link(__('Igralci'), ['controller' => 'Players', 'action' => 'index'], [
                         'class' => 'hover:text-primary-600'
                     ]) ?>
                 </nav>
@@ -61,7 +61,7 @@
                     class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-slate-200 text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     aria-controls="mobile-menu"
                     aria-expanded="false">
-                    <span class="sr-only">Odpri meni</span>
+                    <span class="sr-only"><?= __('Odpri meni') ?></span>
                     <!-- ikona hamburger -->
                     <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -77,10 +77,10 @@
                 id="mobile-menu"
                 class="hidden md:hidden border-t border-slate-200 bg-white">
                 <div class="max-w-6xl mx-auto px-4 py-2 flex flex-col gap-1 text-xs text-slate-700">
-                    <?= $this->Html->link('Turnirji', ['controller' => 'Tournaments', 'action' => 'index'], [
+                    <?= $this->Html->link(__('Turnirji'), ['controller' => 'Tournaments', 'action' => 'index'], [
                         'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
                     ]) ?>
-                    <?= $this->Html->link('Igralci', ['controller' => 'Players', 'action' => 'index'], [
+                    <?= $this->Html->link(__('Igralci'), ['controller' => 'Players', 'action' => 'index'], [
                         'class' => 'block px-1 py-1 rounded hover:bg-slate-100 hover:text-primary-600'
                     ]) ?>
                 </div>

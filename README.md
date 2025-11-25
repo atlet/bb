@@ -76,3 +76,9 @@ bin/cake migrations migrate
 bin/cake migrations seed
 
 bin/cake server
+
+"" 
+```
+## Avtorji
+- Andraž Prinčič
+- Rok Meglič

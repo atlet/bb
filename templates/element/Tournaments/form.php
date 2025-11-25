@@ -10,27 +10,27 @@
 
 <div class="bt-form-group">
     <?= $this->Form->control('name', [
-        'label' => 'Ime turnirja',
+        'label' => __('Ime turnirja'),
     ]) ?>
 </div>
 
 <div class="bt-form-group">
     <?= $this->Form->control('location', [
-        'label' => 'Lokacija',
+        'label' => __('Lokacija'),
     ]) ?>
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="bt-form-group">
         <?= $this->Form->control('starts_on', [
-            'label' => 'Začetek',
+            'label' => __('Začetek'),
             'type' => 'date',
             'empty' => true,
         ]) ?>
     </div>
     <div class="bt-form-group">
         <?= $this->Form->control('ends_on', [
-            'label' => 'Konec',
+            'label' => __('Konec'),
             'type' => 'date',
             'empty' => true,
         ]) ?>
@@ -39,21 +39,21 @@
 
 <div class="bt-form-group">
     <?= $this->Form->control('status', [
-        'label' => 'Status',
+        'label' => __('Status'),
         'type' => 'select',
         'options' => [
-            'draft' => 'osnutek',
-            'active' => 'aktiven',
-            'finished' => 'zaključen',
+            'draft' => __('osnutek'),
+            'active' => __('aktiven'),
+            'finished' => __('zaključen'),
         ],
     ]) ?>
 </div>
 
 <div class="mt-4 flex justify-end gap-2">
-    <?= $this->Html->link('Prekliči', ['action' => 'index'], [
+    <?= $this->Html->link(__('Prekliči'), ['action' => 'index'], [
         'class' => 'bt-button-secondary',
     ]) ?>
-    <?= $this->Form->button('Shrani', ['class' => 'bt-button']) ?>
+    <?= $this->Form->button(__('Shrani'), ['class' => 'bt-button']) ?>
 </div>
 
 <?= $this->Form->end() ?>

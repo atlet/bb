@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-11-25 19:43+0000\n"
+"POT-Creation-Date: 2025-11-25 20:02+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -15,61 +15,49 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: ./src/Controller/CompetitorPlayersController.php:94
-msgid "The competitor player has been saved."
+#: ./src/Controller/CompetitorsController.php:72
+msgid "Igralec je bil shranjen."
 msgstr ""
 
 #: ./src/Controller/CompetitorPlayersController.php:98
-msgid "The competitor player could not be saved. Please, try again."
+msgid "Igralca ni bilo mogoče shraniti. Prosim poskusi ponovno."
 msgstr ""
 
 #: ./src/Controller/CompetitorPlayersController.php:116
-msgid "The competitor player has been deleted."
+#: ./src/Controller/CompetitorsController.php:94
+msgid "Igralec je bil izbrisan."
 msgstr ""
 
 #: ./src/Controller/CompetitorPlayersController.php:118
-msgid "The competitor player could not be deleted. Please, try again."
+#: ./src/Controller/CompetitorsController.php:96
+msgid "Igralca ni bilo mogoče izbrisati. Prosim poskusi ponovno."
 msgstr ""
 
 #: ./src/Controller/CompetitorsController.php:49
-#: ./src/Controller/CompetitorsController.php:72
 msgid "The competitor has been saved."
 msgstr ""
 
 #: ./src/Controller/CompetitorsController.php:53
 #: ./src/Controller/CompetitorsController.php:76
-msgid "The competitor could not be saved. Please, try again."
-msgstr ""
-
-#: ./src/Controller/CompetitorsController.php:94
-msgid "The competitor has been deleted."
-msgstr ""
-
-#: ./src/Controller/CompetitorsController.php:96
-msgid "The competitor could not be deleted. Please, try again."
+msgid "Igralca ni bilo mogoče shraniti. Prosim poskusite ponovno."
 msgstr ""
 
 #: ./src/Controller/CourtsController.php:49
+#: ./src/Controller/CourtsController.php:72
 msgid "Zapis je bil uspešno shranjen."
 msgstr ""
 
 #: ./src/Controller/CourtsController.php:53
+#: ./src/Controller/CourtsController.php:76
 msgid "Napaka pri shranjevanju. Prosim, odpravite napake."
 msgstr ""
 
-#: ./src/Controller/CourtsController.php:72
-msgid "The court has been saved."
-msgstr ""
-
-#: ./src/Controller/CourtsController.php:76
-msgid "The court could not be saved. Please, try again."
-msgstr ""
-
 #: ./src/Controller/CourtsController.php:94
-msgid "The court has been deleted."
+msgid "Zapis je bil uspešno izbrisan."
 msgstr ""
 
 #: ./src/Controller/CourtsController.php:96
-msgid "The court could not be deleted. Please, try again."
+msgid "Napaka pri izbrisu. Prosim, odpravite napake."
 msgstr ""
 
 #: ./src/Controller/MatchGamesController.php:51
@@ -330,6 +318,158 @@ msgstr ""
 
 #: ./templates/MatchGames/view.php:38
 msgid "Score2"
+msgstr ""
+
+#: ./templates/Players/add.php:7
+#: ./templates/Players/add.php:13
+#: ./templates/Players/index.php:19
+msgid "Dodaj igralca"
+msgstr ""
+
+#: ./templates/Players/edit.php:7
+#: ./templates/Players/edit.php:14
+msgid "Uredi igralca"
+msgstr ""
+
+#: ./templates/Players/edit.php:21
+#: ./templates/Players/view.php:21
+msgid "Nazaj na seznam"
+msgstr ""
+
+#: ./templates/Players/edit.php:25
+#: ./templates/Players/view.php:28
+msgid "Res želiš izbrisati tega igralca?"
+msgstr ""
+
+#: ./templates/Players/index.php:7
+#: ./templates/Players/index.php:13
+msgid "Igralci"
+msgstr ""
+
+#: ./templates/Players/index.php:15
+msgid "Seznam vseh registriranih igralcev"
+msgstr ""
+
+#: ./templates/Players/index.php:28
+msgid "Seznam igralcev"
+msgstr ""
+
+#: ./templates/Players/index.php:31
+msgid "{{count}} zapisov"
+msgstr ""
+
+#: ./templates/Players/index.php:39
+#: ./templates/Players/view.php:17
+msgid "ID"
+msgstr ""
+
+#: ./templates/Players/index.php:40
+#: ./templates/Players/view.php:52
+msgid "Priimek"
+msgstr ""
+
+#: ./templates/Players/index.php:41
+#: ./templates/Players/view.php:45
+msgid "Ime"
+msgstr ""
+
+#: ./templates/Players/index.php:42
+#: ./templates/Players/view.php:59
+msgid "Spol"
+msgstr ""
+
+#: ./templates/Players/index.php:43
+#: ./templates/Players/view.php:72
+msgid "Rating"
+msgstr ""
+
+#: ./templates/Players/index.php:44
+msgid "Akcije"
+msgstr ""
+
+#: ./templates/Players/index.php:51
+msgid "Trenutno ni vnešenih igralcev."
+msgstr ""
+
+#: ./templates/Players/index.php:62
+msgid "M"
+msgstr ""
+
+#: ./templates/Players/index.php:64
+msgid "Ž"
+msgstr ""
+
+#: ./templates/Players/index.php:103
+msgid "Stran {{page}} od {{pages}} · skupaj {{count}} zapisov"
+msgstr ""
+
+#: ./templates/Players/index.php:107
+msgid "« Prva"
+msgstr ""
+
+#: ./templates/Players/index.php:108
+msgid "‹ Nazaj"
+msgstr ""
+
+#: ./templates/Players/index.php:110
+msgid "Naprej ›"
+msgstr ""
+
+#: ./templates/Players/index.php:111
+msgid "Zadnja »"
+msgstr ""
+
+#: ./templates/Players/view.php:7
+#: ./templates/Players/view.php:14
+msgid "Igralec"
+msgstr ""
+
+#: ./templates/Players/view.php:24
+msgid "Uredi"
+msgstr ""
+
+#: ./templates/Players/view.php:27
+msgid "Izbriši"
+msgstr ""
+
+#: ./templates/Players/view.php:40
+msgid "Osnovni podatki"
+msgstr ""
+
+#: ./templates/Players/view.php:62
+msgid "Moški"
+msgstr ""
+
+#: ./templates/Players/view.php:64
+msgid "Ženska"
+msgstr ""
+
+#: ./templates/Players/view.php:79
+msgid "Ustvarjen"
+msgstr ""
+
+#: ./templates/Players/view.php:80
+msgid "Spremenjen"
+msgstr ""
+
+#: ./templates/Players/view.php:91
+msgid "Ekipe / pari, kjer nastopa"
+msgstr ""
+
+#: ./templates/Players/view.php:97
+msgid "Ta igralec trenutno ni dodeljen nobenemu paru / ekipi."
+msgstr ""
+
+#: ./templates/Players/view.php:104
+msgid "Par / ekipa"
+msgstr ""
+
+#: ./templates/Players/view.php:105
+msgid "Pozicija"
+msgstr ""
+
+#: ./templates/Players/view.php:106
+msgid "Dogodek"
 msgstr ""
 
 #: ./templates/element/CompetitorPlayers/form.php:45
