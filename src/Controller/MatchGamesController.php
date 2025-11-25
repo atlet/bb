@@ -48,11 +48,11 @@ class MatchGamesController extends AppController
         if ($this->request->is('post')) {
             $matchGame = $this->MatchGames->patchEntity($matchGame, $this->request->getData());
             if ($this->MatchGames->save($matchGame)) {
-                $this->Flash->success(__('The match game has been saved.'));
+                $this->Flash->success(__('Zapis je bil uspešno shranjen.'));
 
                 return $this->redirect(['action' => 'atlindex']);
             }
-            $this->Flash->error(__('The match game could not be saved. Please, try again.'));
+            $this->Flash->error(__('Napaka pri shranjevanju. Prosim, odpravite napake.'));
         }
         $matches = $this->MatchGames->Matches->find('list', limit: 200)->all();
         $this->set(compact('matchGame', 'matches'));
@@ -71,11 +71,11 @@ class MatchGamesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $matchGame = $this->MatchGames->patchEntity($matchGame, $this->request->getData());
             if ($this->MatchGames->save($matchGame)) {
-                $this->Flash->success(__('The match game has been saved.'));
+                $this->Flash->success(__('Zapis je bil uspešno shranjen.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The match game could not be saved. Please, try again.'));
+            $this->Flash->error(__('Napaka pri shranjevanju. Prosim, odpravite napake.'));
         }
         $matches = $this->MatchGames->Matches->find('list', limit: 200)->all();
         $this->set(compact('matchGame', 'matches'));
@@ -93,9 +93,9 @@ class MatchGamesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $matchGame = $this->MatchGames->get($id);
         if ($this->MatchGames->delete($matchGame)) {
-            $this->Flash->success(__('The match game has been deleted.'));
+            $this->Flash->success(__('Zapis je bil uspešno izbrisan.'));
         } else {
-            $this->Flash->error(__('The match game could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Napaka pri izbrisu. Prosim, odpravite napake.'));
         }
 
         return $this->redirect(['action' => 'index']);
