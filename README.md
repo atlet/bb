@@ -3,6 +3,7 @@
 ## 🌐 Languages
 - 🇸🇮 [Slovenščina](README.sl.md)
 
+---
 Badminton Tournament Manager is a CakePHP application for managing badminton tournaments.
 
 The main idea:

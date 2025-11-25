@@ -93,3 +93,7 @@ Nastavitve baze - dodaj v config/app_local.php.
             'log' => true,
         ],
 ```
+
+## Authors
+- Andraž Prinčič
+- Rok Meglič
