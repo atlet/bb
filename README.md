@@ -63,6 +63,8 @@ Tipične tabele (poimenovanje se sklada z CakePHP konvencijo):
 
 ## 🚀 Namestitev (osnovni koraki)
 
+Namesti docker in docker composer.
+
 ```bash
 git clone https://github.com/USERNAME/badminton-tournament.git
 cd badminton-tournament
@@ -76,6 +78,20 @@ bin/cake migrations migrate
 bin/cake migrations seed
 
 bin/cake server
+```
+
+Nastavitve baze - dodaj v config/app_local.php.
+```bash
+'default' => [
+            'className' => \Cake\Database\Connection::class,
+            'driver' => \Cake\Database\Driver\Sqlite::class,
+            'database' => ROOT . DS . 'db' . DS . 'tournament.sqlite',
+            'encoding' => 'utf8',
+            'persistent' => false,
+            'timezone' => 'UTC',
+            'cacheMetadata' => true,
+            'log' => true,
+        ],
 ```
 
 # 🏸 Badminton Tournament Manager
