@@ -74,5 +74,5 @@ Tables follow CakePHP naming conventions:
 - `competitors`
   
 ## Authors
-- Andraž Prinčič
-- Rok Meglič
+- Andraž Prinčič (head of development, idea founder)
+- Rok Meglič (assistent)
