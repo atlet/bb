@@ -94,6 +94,6 @@ Nastavitve baze - dodaj v config/app_local.php.
         ],
 ```
 
-## Authors
+## Avtorji
 - Andraž Prinčič
 - Rok Meglič

@@ -73,6 +73,6 @@ Tables follow CakePHP naming conventions:
 - `players`  
 - `competitors`
   
-## Avtorji
-- Andraž Prinčič (vodja razvoja)
-- Rok Meglič (pomočnik)
+## Authors
+- Andraž Prinčič
+- Rok Meglič
